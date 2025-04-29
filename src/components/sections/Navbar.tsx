@@ -4,7 +4,7 @@ import CTAButton from "../ui/CTAButton";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
-  const [textColor, setTextColor] = useState("var(--charcoal)");
+  const [textColor, setTextColor] = useState("var(--background)");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,12 +12,13 @@ export default function Navbar() {
 
       // TODO: when layout is complete
       if (
-        (scrollPosition >= 0 && scrollPosition < 500) || // First section (white)
-        (scrollPosition >= 1000 && scrollPosition < 1500) // Third section (white)
+        (scrollPosition >= 0 && scrollPosition < 950) ||
+        (scrollPosition >= 1950 && scrollPosition < 2850) ||
+        scrollPosition >= 3450
       ) {
-        setTextColor("var(--charcoal)");
-      } else {
         setTextColor("var(--background)");
+      } else {
+        setTextColor("var(--charcoal)");
       }
     };
 
