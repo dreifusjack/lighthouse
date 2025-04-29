@@ -1,3 +1,5 @@
 export default function Hero() {
-  return <div>hero</div>;
+  return (
+    <div style={{ backgroundColor: "var(--blue)", height: "1000px" }}>hero</div>
+  );
 }
