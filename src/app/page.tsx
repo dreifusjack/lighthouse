@@ -1,3 +1,10 @@
+import Hero from "./components/sections/Hero";
+
 export default function Home() {
-  return <main>hello world</main>;
+  return (
+    <main>
+      <Hero />
+      {/* sectioned components */}
+    </main>
+  );
 }
