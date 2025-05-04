@@ -12,13 +12,13 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState<SectionName>("home");
   const [scrollActiveSection, setScrollActiveSection] =
     useState<SectionName>("home");
+  const [isHovering, setIsHovering] = useState(false);
   const [activeIndicator, setActiveIndicator] = useState({
     left: 0,
     width: 0,
     height: 0,
   });
 
-  const isClickScrollRef = useRef(false); // checks for programattic scrolling
   const navRefs = {
     home: useRef<HTMLLIElement>(null),
     about: useRef<HTMLLIElement>(null),
@@ -43,8 +43,6 @@ export default function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isClickScrollRef.current) return; // omit updating active section in this case
-
       const scrollPosn = window.scrollY;
 
       // Lighthouse text color logic
@@ -73,39 +71,37 @@ export default function Navbar() {
       }
 
       setScrollActiveSection(newSection);
-      setActiveSection(newSection);
+
+      if (!isHovering) {
+        setActiveSection(newSection);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
     window.addEventListener("resize", handleScroll);
+    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
-  }, []);
+  }, [isHovering]);
 
   const scrollToSection = (sectionId: SectionName) => {
-    setActiveSection(sectionId);
-    isClickScrollRef.current = true;
-
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
-
-      // timeout to reduce over indication on click scroll
-      setTimeout(() => {
-        isClickScrollRef.current = false;
-        setScrollActiveSection(sectionId);
-      }, 1000);
+      setScrollActiveSection(sectionId);
     }
   };
 
-  const handleNavItemMouseEnter = (section: SectionName) => {
+  const handleNavMouseEnter = (section: SectionName) => {
+    setIsHovering(true);
     setActiveSection(section);
   };
 
-  const handleNavItemClick = (section: SectionName) => {
-    scrollToSection(section);
+  const handleNavMouseLeave = () => {
+    setIsHovering(false);
+    setActiveSection(scrollActiveSection);
   };
 
   const navItems: Array<{ name: SectionName; label: string }> = [
@@ -120,7 +116,7 @@ export default function Navbar() {
     <nav className="flex justify-between bg-transparent items-center fixed top-5 left-0 w-full z-50 px-4 py-2">
       <div
         className="flex items-center cursor-pointer"
-        onClick={() => handleNavItemClick("home")}
+        onClick={() => scrollToSection("home")}
       >
         <Image src="/lighthouse_logo.png" alt="" width={50} height={50} />
         <h1
@@ -136,7 +132,7 @@ export default function Navbar() {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        onMouseLeave={() => setActiveSection(scrollActiveSection)}
+        onMouseLeave={handleNavMouseLeave}
         sx={{
           backgroundColor: `rgba(254, 250, 240, 0.27)`,
           backdropFilter: `blur(10px)`,
@@ -166,8 +162,8 @@ export default function Navbar() {
               label={item.label}
               activeSection={activeSection}
               ref={navRefs[item.name]}
-              onMouseEnter={handleNavItemMouseEnter}
-              onClick={handleNavItemClick}
+              onMouseEnter={handleNavMouseEnter}
+              onClick={scrollToSection}
             />
           ))}
         </ul>

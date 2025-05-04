@@ -22,22 +22,4 @@ h5,
 h6 {
   font-family: var(--font-header);
 }
-
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  overflow: hidden;
-}
-
-main {
-  scroll-snap-type: y mandatory;
-  height: 100vh;
-  overflow-y: auto;
-}
-
-footer {
-  scroll-snap-align: end;
-  min-height: 100vh;
-}
+/* TODO: handle the footer scroll background color  */
