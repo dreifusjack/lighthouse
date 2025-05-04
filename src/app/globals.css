@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ebf6fe;
+  --light: #ebf6fe;
   --blue: #709be5;
   --red: #ff4456;
   --yellow: #fbda5d;
@@ -9,7 +9,7 @@
 }
 
 body {
-  background: var(--background);
+  background: var(--blue);
   color: var(--charcoal);
   font-family: var(--font-text);
 }
@@ -21,4 +21,23 @@ h4,
 h5,
 h6 {
   font-family: var(--font-header);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+main {
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+footer {
+  scroll-snap-align: end;
+  min-height: 100vh;
 }

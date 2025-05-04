@@ -16,7 +16,6 @@ export default function Home() {
       <Mission />
       <Collaborate />
       <Footer />
-      {/* sectioned components */}
     </main>
   );
 }

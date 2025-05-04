@@ -8,7 +8,7 @@ import { SectionName } from "@/types";
 
 export default function Navbar() {
   const [lighthouseTextColor, setLighthouseTextColor] =
-    useState("var(--background)");
+    useState("var(--light)");
   const [activeSection, setActiveSection] = useState<SectionName>("home");
   const [scrollActiveSection, setScrollActiveSection] =
     useState<SectionName>("home");
@@ -53,7 +53,7 @@ export default function Navbar() {
         (scrollPosn >= 1950 && scrollPosn < 2850) ||
         scrollPosn >= 3450
       ) {
-        setLighthouseTextColor("var(--background)");
+        setLighthouseTextColor("var(--light)");
       } else {
         setLighthouseTextColor("var(--charcoal)");
       }
