@@ -1,4 +1,3 @@
-// components/sections/Navbar.tsx
 "use client";
 import Image from "next/image";
 import CTAButton from "../ui/CTAButton";
@@ -11,12 +10,15 @@ export default function Navbar() {
   const [lighthouseTextColor, setLighthouseTextColor] =
     useState("var(--background)");
   const [activeSection, setActiveSection] = useState<SectionName>("home");
-  const [indicatorStyle, setIndicatorStyle] = useState({
+  const [scrollActiveSection, setScrollActiveSection] =
+    useState<SectionName>("home");
+  const [activeIndicator, setActiveIndicator] = useState({
     left: 0,
     width: 0,
     height: 0,
   });
 
+  const isClickScrollRef = useRef(false); // checks for programattic scrolling
   const navRefs = {
     home: useRef<HTMLLIElement>(null),
     about: useRef<HTMLLIElement>(null),
@@ -25,24 +27,24 @@ export default function Navbar() {
     contact: useRef<HTMLLIElement>(null),
   };
 
-  // Update indicator position when active section changes
   useEffect(() => {
     if (navRefs[activeSection]?.current) {
-      const el = navRefs[activeSection].current;
-      const rect = el.getBoundingClientRect();
-      const offset = 20;
+      const activeNavItem = navRefs[activeSection].current;
+      const activeNavDims = activeNavItem.getBoundingClientRect();
+      const highlighterPadding = 20;
 
-      setIndicatorStyle({
-        left: el.offsetLeft + offset,
-        width: rect.width - offset / 2,
-        height: rect.height,
+      setActiveIndicator({
+        left: activeNavItem.offsetLeft + highlighterPadding,
+        width: activeNavDims.width - highlighterPadding / 2,
+        height: activeNavDims.height,
       });
     }
   }, [activeSection]);
 
-  // Your scroll logic can remain the same
   useEffect(() => {
     const handleScroll = () => {
+      if (isClickScrollRef.current) return; // omit updating active section in this case
+
       const scrollPosn = window.scrollY;
 
       // Lighthouse text color logic
@@ -57,33 +59,44 @@ export default function Navbar() {
       }
 
       // Active section based on scroll position
+      let newSection: SectionName = "home";
       if (scrollPosn < 950) {
-        setActiveSection("home");
+        newSection = "home";
       } else if (scrollPosn < 1950) {
-        setActiveSection("about");
+        newSection = "about";
       } else if (scrollPosn < 2850) {
-        setActiveSection("partner");
+        newSection = "partner";
       } else if (scrollPosn < 3450) {
-        setActiveSection("mission");
+        newSection = "mission";
       } else {
-        setActiveSection("contact");
+        newSection = "contact";
       }
+
+      setScrollActiveSection(newSection);
+      setActiveSection(newSection);
     };
 
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll); // Update on resize too
-    handleScroll();
+    window.addEventListener("resize", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
     };
   }, []);
 
-  // Handle smooth scrolling when clicking a nav item
-  const scrollToSection = (sectionId: string) => {
+  const scrollToSection = (sectionId: SectionName) => {
+    setActiveSection(sectionId);
+    isClickScrollRef.current = true;
+
     const section = document.getElementById(sectionId);
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
+
+      // timeout to reduce over indication on click scroll
+      setTimeout(() => {
+        isClickScrollRef.current = false;
+        setScrollActiveSection(sectionId);
+      }, 1000);
     }
   };
 
@@ -104,6 +117,7 @@ export default function Navbar() {
         display="flex"
         justifyContent="center"
         alignItems="center"
+        onMouseLeave={() => setActiveSection(scrollActiveSection)}
         sx={{
           backgroundColor: `rgba(254, 250, 240, 0.27)`,
           backdropFilter: `blur(10px)`,
@@ -118,9 +132,9 @@ export default function Navbar() {
         <div
           className="absolute bg-white/30 rounded-2xl transition-all duration-300 ease-in-out"
           style={{
-            left: indicatorStyle.left,
-            width: indicatorStyle.width,
-            height: indicatorStyle.height,
+            left: activeIndicator.left,
+            width: activeIndicator.width,
+            height: activeIndicator.height,
             zIndex: 0,
           }}
         />
