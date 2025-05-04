@@ -162,7 +162,7 @@ export default function Navbar() {
               sectionName={item.name}
               label={item.label}
               activeSection={activeSection}
-              innerRef={navRefs[item.name]}
+              ref={navRefs[item.name]}
               onMouseEnter={handleNavItemMouseEnter}
               onClick={handleNavItemClick}
             />

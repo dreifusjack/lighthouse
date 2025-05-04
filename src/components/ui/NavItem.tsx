@@ -5,7 +5,7 @@ interface NavItemProps {
   sectionName: SectionName;
   label: string;
   activeSection: SectionName;
-  innerRef: React.Ref<HTMLLIElement>;
+  ref: React.Ref<HTMLLIElement>;
   onMouseEnter: (section: SectionName) => void;
   onClick: (section: SectionName) => void;
 }
@@ -14,13 +14,13 @@ export default function NavItem({
   sectionName,
   label,
   activeSection,
-  innerRef,
+  ref,
   onMouseEnter,
   onClick,
 }: NavItemProps) {
   return (
     <li
-      ref={innerRef}
+      ref={ref}
       className={`text-xl font-medium cursor-pointer transition-all px-4 py-1.5 rounded-2xl ${
         activeSection === sectionName ? "font-bold" : ""
       }`}
