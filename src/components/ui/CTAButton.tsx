@@ -5,7 +5,7 @@ export default function CTAButton() {
   return (
     <div>
       <button
-        className="px-4 py-2 rounded-3xl cursor-pointer"
+        className="px-4 py-4 rounded-3xl cursor-pointer"
         style={{ backgroundColor: "var(--red)", color: "var(--background)" }}
         onClick={() => console.log("cta clicked")}
       >
