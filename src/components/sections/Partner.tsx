@@ -1,11 +1,17 @@
-export default function About() {
+export default function Partner() {
   return (
-    <div style={{ height: "1000px" }}>
-      <div
-        style={{ width: "90%", height: "90%", backgroundColor: "var(--blue)" }}
-      >
-        Partner With Us!{" "}
+    <section id="partner">
+      <div style={{ height: "1000px" }}>
+        <div
+          style={{
+            width: "90%",
+            height: "90%",
+            backgroundColor: "var(--blue)",
+          }}
+        >
+          Partner With Us!{" "}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

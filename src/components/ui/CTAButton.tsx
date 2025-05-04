@@ -1,6 +1,7 @@
 "use client";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
+// TODO: add effect on hover
 export default function CTAButton() {
   return (
     <div>

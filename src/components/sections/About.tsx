@@ -1,3 +1,7 @@
 export default function About() {
-  return <div style={{ height: "1000px" }}>About</div>;
+  return (
+    <section id="about">
+      <div style={{ height: "1000px" }}>About</div>
+    </section>
+  );
 }

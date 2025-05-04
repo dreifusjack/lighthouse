@@ -1,9 +1,9 @@
+// components/sections/Navbar.tsx
 "use client";
 import Image from "next/image";
 import CTAButton from "../ui/CTAButton";
 import { useState, useEffect, useRef } from "react";
 import { Box } from "@mui/material";
-import Link from "next/link";
 
 type SectionName = "home" | "about" | "partner" | "mission" | "contact";
 
@@ -40,6 +40,7 @@ export default function Navbar() {
     }
   }, [activeSection]);
 
+  // Your scroll logic can remain the same
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosn = window.scrollY;
@@ -77,6 +78,14 @@ export default function Navbar() {
       window.removeEventListener("resize", handleScroll);
     };
   }, []);
+
+  // Handle smooth scrolling when clicking a nav item
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   return (
     <nav className="flex justify-between bg-transparent items-center fixed top-5 left-0 w-full z-50 px-4 py-2">
@@ -123,8 +132,9 @@ export default function Navbar() {
               activeSection === "home" ? "font-bold" : ""
             }`}
             onMouseEnter={() => setActiveSection("home")}
+            onClick={() => scrollToSection("home")}
           >
-            <Link href="/">Home</Link>
+            Home
           </li>
           <li
             ref={navRefs.about}
@@ -132,6 +142,7 @@ export default function Navbar() {
               activeSection === "about" ? "font-bold" : ""
             }`}
             onMouseEnter={() => setActiveSection("about")}
+            onClick={() => scrollToSection("about")}
           >
             About Us
           </li>
@@ -141,8 +152,9 @@ export default function Navbar() {
               activeSection === "partner" ? "font-bold" : ""
             }`}
             onMouseEnter={() => setActiveSection("partner")}
+            onClick={() => scrollToSection("partner")}
           >
-            <Link href="/">Partner</Link>
+            Partner
           </li>
           <li
             ref={navRefs.mission}
@@ -150,8 +162,9 @@ export default function Navbar() {
               activeSection === "mission" ? "font-bold" : ""
             }`}
             onMouseEnter={() => setActiveSection("mission")}
+            onClick={() => scrollToSection("mission")}
           >
-            <Link href="/">Our Mission</Link>
+            Our Mission
           </li>
           <li
             ref={navRefs.contact}
@@ -159,8 +172,9 @@ export default function Navbar() {
               activeSection === "contact" ? "font-bold" : ""
             }`}
             onMouseEnter={() => setActiveSection("contact")}
+            onClick={() => scrollToSection("contact")}
           >
-            <Link href="/">Contact</Link>
+            Contact
           </li>
         </ul>
       </Box>

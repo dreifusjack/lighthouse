@@ -1,3 +1,7 @@
 export default function Mission() {
-  return <div style={{ height: "500px" }}>Mission</div>;
+  return (
+    <section id="mission">
+      <div style={{ height: "500px" }}>Mission</div>
+    </section>
+  );
 }
