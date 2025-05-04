@@ -3,8 +3,8 @@ import Image from "next/image";
 import CTAButton from "../ui/CTAButton";
 import { useState, useEffect, useRef } from "react";
 import { Box } from "@mui/material";
-
-type SectionName = "home" | "about" | "partner" | "mission" | "contact";
+import NavItem from "../ui/NavItem";
+import { SectionName } from "@/types";
 
 export default function Navbar() {
   const [lighthouseTextColor, setLighthouseTextColor] =
@@ -100,6 +100,22 @@ export default function Navbar() {
     }
   };
 
+  const handleNavItemMouseEnter = (section: SectionName) => {
+    setActiveSection(section);
+  };
+
+  const handleNavItemClick = (section: SectionName) => {
+    scrollToSection(section);
+  };
+
+  const navItems: Array<{ name: SectionName; label: string }> = [
+    { name: "home", label: "Home" },
+    { name: "about", label: "About Us" },
+    { name: "partner", label: "Partner" },
+    { name: "mission", label: "Our Mission" },
+    { name: "contact", label: "Contact" },
+  ];
+
   return (
     <nav className="flex justify-between bg-transparent items-center fixed top-5 left-0 w-full z-50 px-4 py-2">
       <div className="flex items-center">
@@ -140,56 +156,17 @@ export default function Navbar() {
         />
 
         <ul className="flex flex-row space-x-3 relative z-10">
-          <li
-            ref={navRefs.home}
-            className={`text-xl font-medium cursor-pointer transition-all px-4 py-1.5 rounded-2xl ${
-              activeSection === "home" ? "font-bold" : ""
-            }`}
-            onMouseEnter={() => setActiveSection("home")}
-            onClick={() => scrollToSection("home")}
-          >
-            Home
-          </li>
-          <li
-            ref={navRefs.about}
-            className={`text-xl font-medium cursor-pointer transition-all px-4 py-1.5 rounded-2xl ${
-              activeSection === "about" ? "font-bold" : ""
-            }`}
-            onMouseEnter={() => setActiveSection("about")}
-            onClick={() => scrollToSection("about")}
-          >
-            About Us
-          </li>
-          <li
-            ref={navRefs.partner}
-            className={`text-xl font-medium cursor-pointer transition-all px-4 py-1.5 rounded-2xl ${
-              activeSection === "partner" ? "font-bold" : ""
-            }`}
-            onMouseEnter={() => setActiveSection("partner")}
-            onClick={() => scrollToSection("partner")}
-          >
-            Partner
-          </li>
-          <li
-            ref={navRefs.mission}
-            className={`text-xl font-medium cursor-pointer transition-all px-4 py-1.5 rounded-2xl ${
-              activeSection === "mission" ? "font-bold" : ""
-            }`}
-            onMouseEnter={() => setActiveSection("mission")}
-            onClick={() => scrollToSection("mission")}
-          >
-            Our Mission
-          </li>
-          <li
-            ref={navRefs.contact}
-            className={`text-xl font-medium cursor-pointer transition-all px-4 py-1.5 rounded-2xl ${
-              activeSection === "contact" ? "font-bold" : ""
-            }`}
-            onMouseEnter={() => setActiveSection("contact")}
-            onClick={() => scrollToSection("contact")}
-          >
-            Contact
-          </li>
+          {navItems.map((item) => (
+            <NavItem
+              key={item.name}
+              sectionName={item.name}
+              label={item.label}
+              activeSection={activeSection}
+              innerRef={navRefs[item.name]}
+              onMouseEnter={handleNavItemMouseEnter}
+              onClick={handleNavItemClick}
+            />
+          ))}
         </ul>
       </Box>
       <CTAButton />
