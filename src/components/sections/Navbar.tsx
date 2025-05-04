@@ -118,7 +118,10 @@ export default function Navbar() {
 
   return (
     <nav className="flex justify-between bg-transparent items-center fixed top-5 left-0 w-full z-50 px-4 py-2">
-      <div className="flex items-center">
+      <div
+        className="flex items-center cursor-pointer"
+        onClick={() => handleNavItemClick("home")}
+      >
         <Image src="/lighthouse_logo.png" alt="" width={50} height={50} />
         <h1
           className="text-4xl transition-colors duration-300"
