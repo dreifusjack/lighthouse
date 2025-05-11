@@ -1,7 +1,7 @@
 export default function Hero() {
   return (
     <section id="home">
-      <div style={{ height: "1000px" }}></div>
+      <div className="h-250 bg-gradient-to-t from-[#fcf6d7] to-[#709be5]"></div>
     </section>
   );
 }

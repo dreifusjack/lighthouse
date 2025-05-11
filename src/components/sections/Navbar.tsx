@@ -47,8 +47,8 @@ export default function Navbar() {
 
       // Lighthouse text color logic
       if (
-        (scrollPosn >= 0 && scrollPosn < 950) ||
-        (scrollPosn >= 1950 && scrollPosn < 2850) ||
+        (scrollPosn >= 0 && scrollPosn < 400) ||
+        (scrollPosn >= 1900 && scrollPosn < 2850) ||
         scrollPosn >= 3450
       ) {
         setLighthouseTextColor("var(--light)");

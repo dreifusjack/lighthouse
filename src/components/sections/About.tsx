@@ -1,9 +1,7 @@
 export default function About() {
   return (
     <section id="about">
-      <div style={{ height: "1000px", backgroundColor: "var(--light)" }}>
-        About
-      </div>
+      <div className="h-250 bg-gradient-to-t from-[#ebf6fe] to-[#fcf6d7]"></div>
     </section>
   );
 }
