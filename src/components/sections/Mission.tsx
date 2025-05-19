@@ -1,7 +1,7 @@
 export default function Mission() {
   return (
     <section id="mission">
-      <div style={{ height: "600px", backgroundColor: "var(--light)" }}>
+      <div className="h-[600px]">
         <div className="ms-[20%] max-w-[62%] mt-[40px] flex flex-col gap-6 text-xl">
           <h1 className="text-[40px]">Our Mission</h1>
           <p>
