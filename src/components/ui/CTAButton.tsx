@@ -1,13 +1,8 @@
 "use client";
+import { scrollToContact } from "@/utils";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
 
 export default function CTAButton() {
-  const scrollToContact = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
-  };
   return (
     <div>
       <a>

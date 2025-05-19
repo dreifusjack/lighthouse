@@ -4,7 +4,7 @@ import CTAButton from "../ui/CTAButton";
 import { useState, useEffect, useRef } from "react";
 import { Box } from "@mui/material";
 import NavItem from "../ui/NavItem";
-import { SectionName } from "@/types";
+import { SectionName } from "@/utils";
 
 export default function Navbar() {
   const [lighthouseTextColor, setLighthouseTextColor] =

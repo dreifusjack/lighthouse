@@ -1,1 +1,0 @@
-export type SectionName = "home" | "about" | "partner" | "mission" | "contact";
