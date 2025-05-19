@@ -1,4 +1,4 @@
-import { SectionName } from "@/types";
+import { SectionName } from "@/utils";
 import React from "react";
 
 interface NavItemProps {

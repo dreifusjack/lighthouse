@@ -1,4 +1,5 @@
 "use client";
+import { scrollToContact } from "@/utils";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import { useState } from "react";
 
@@ -6,13 +7,14 @@ interface AboutModuleProps {
   icon: React.ReactNode;
   title: string;
   content: string;
-  //href: TBD
+  refrencesExternalLink: boolean;
 }
 
 export default function AboutModule({
   icon,
   title,
   content,
+  refrencesExternalLink,
 }: AboutModuleProps) {
   const [isHovering, setIsHovering] = useState(false);
   const linkTitle = title === "Invest" ? "Incubate" : title;
@@ -26,6 +28,14 @@ export default function AboutModule({
         className="flex cursor-pointer items-center transition-all duration-200"
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
+        onClick={() => {
+          if (refrencesExternalLink) {
+            window.open("https://www.builtwithatlas.com/", "_blank");
+          } else {
+            scrollToContact();
+          }
+          console.log("h");
+        }}
       >
         <p className={isHovering ? "text-md font-medium" : "text-sm"}>
           {linkTitle}
