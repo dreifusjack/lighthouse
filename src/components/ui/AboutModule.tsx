@@ -6,7 +6,6 @@ interface AboutModuleProps {
   icon: React.ReactNode;
   title: string;
   content: string;
-  color: string;
   //href: TBD
 }
 
@@ -14,7 +13,6 @@ export default function AboutModule({
   icon,
   title,
   content,
-  color,
 }: AboutModuleProps) {
   const [isHovering, setIsHovering] = useState(false);
   const linkTitle = title === "Invest" ? "Incubate" : title;

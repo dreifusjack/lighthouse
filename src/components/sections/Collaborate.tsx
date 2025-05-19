@@ -1,16 +1,13 @@
+import CenteredBox from "../ui/CenteredBox";
+
 export default function Collaborate() {
   return (
     <section id="contact">
-      <div style={{ height: "1000px", backgroundColor: "var(--light)" }}>
-        <div
-          style={{
-            width: "90%",
-            height: "90%",
-            backgroundColor: "var(--blue)",
-          }}
-        >
-          Get in touch!
-        </div>
+      <div
+        style={{ backgroundColor: "var(--light)" }}
+        className="w-full h-screen flex items-center justify-center "
+      >
+        <CenteredBox />
       </div>
     </section>
   );

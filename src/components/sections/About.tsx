@@ -22,19 +22,16 @@ export default function About() {
             icon={<Image src="/buy.png" alt="" width={50} height={50} />}
             title="Buy"
             content="If you love to build but don’t enjoy everything else that comes along with running a business like admin tasks & management - then partner with us!"
-            color="var(--red)"
           />
           <AboutModule
             icon={<Image src="/build.png" alt="" width={50} height={50} />}
             title="Build"
             content="Have a Great Idea? We help bring great ideas to life. Apply to have your idea built by our Studio. From concept to completion."
-            color="var(--blue)"
           />
           <AboutModule
             icon={<Image src="/invest.png" alt="" width={50} height={50} />}
             title="Invest"
             content="Not your traditional capital. We invest in companies that can thrive off a single round of investment. Coming soon..."
-            color="var(--yellow)"
           />
         </div>
       </div>
