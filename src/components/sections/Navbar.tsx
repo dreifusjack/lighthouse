@@ -47,9 +47,9 @@ export default function Navbar() {
 
       // Lighthouse text color logic
       if (
-        (scrollPosn >= 0 && scrollPosn < 400) ||
-        (scrollPosn >= 1900 && scrollPosn < 2850) ||
-        scrollPosn >= 3450
+        (scrollPosn >= 0 && scrollPosn < 600) ||
+        (scrollPosn >= 1975 && scrollPosn < 2850) ||
+        scrollPosn >= 3550
       ) {
         setLighthouseTextColor("var(--light)");
       } else {
@@ -60,11 +60,11 @@ export default function Navbar() {
       let newSection: SectionName = "home";
       if (scrollPosn < 950) {
         newSection = "home";
-      } else if (scrollPosn < 1950) {
+      } else if (scrollPosn < 1975) {
         newSection = "about";
       } else if (scrollPosn < 2850) {
         newSection = "partner";
-      } else if (scrollPosn < 3450) {
+      } else if (scrollPosn < 3550) {
         newSection = "mission";
       } else {
         newSection = "contact";
@@ -153,7 +153,6 @@ export default function Navbar() {
             zIndex: 0,
           }}
         />
-
         <ul className="flex flex-row space-x-3 relative z-10">
           {navItems.map((item) => (
             <NavItem
