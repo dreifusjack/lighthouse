@@ -1,16 +1,37 @@
-import React from "react";
-
 interface PolygonProps {
   isFilled: boolean;
+  label: string;
 }
 
-export default function Polygon({ isFilled }: PolygonProps) {
+export function Polygon({ isFilled, label }: PolygonProps) {
+  const diamondPoints = "220.5,10 450,110 220.5,210 0,110";
+
   return (
-    <svg width="343" height="200">
-      <polygon
-        points="100,10 40,198 190,78 10,78 "
-        style={{ fill: "black", stroke: "var(--light)", strokeWidth: 2 }}
-      />
-    </svg>
+    <div className="flex">
+      <svg width="600" height="220" className=" duration-300">
+        <polygon
+          points={diamondPoints}
+          className="transition-all duration-300 cursor-pointer"
+          style={
+            isFilled
+              ? { fill: "var(--red)", stroke: "var(--light)", strokeWidth: 2 }
+              : {
+                  fill: "transparent",
+                  stroke: "var(--light)",
+                  strokeWidth: 1.5,
+                }
+          }
+        />
+        <text
+          x="90%"
+          y="50%"
+          dominantBaseline="middle"
+          textAnchor="middle"
+          fill="var(--light)"
+        >
+          {label}
+        </text>
+      </svg>
+    </div>
   );
 }
