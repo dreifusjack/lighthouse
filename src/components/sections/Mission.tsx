@@ -2,7 +2,7 @@ export default function Mission() {
   return (
     <section id="mission">
       <div className="h-[600px]">
-        <div className="ms-[20%] max-w-[62%] mt-[40px] flex flex-col gap-6 text-xl">
+        <div className="ms-[20%] max-w-[62%] mt-[40px] flex flex-col gap-6 text-xl text-center">
           <h1 className="text-[40px]">Our Mission</h1>
           <p>
             It started with a simple observation: too many great ideas die
@@ -31,7 +31,7 @@ export default function Mission() {
             We're not just building software. We're building leverage for the
             next generation of creators.
           </p>
-          <p className="font-bold text-right">The Lighthouse Team</p>
+          <p className="font-bold ">The Lighthouse Team</p>
         </div>
       </div>
     </section>

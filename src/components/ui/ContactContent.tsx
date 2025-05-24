@@ -16,13 +16,13 @@ export function ContactContent({ root }: ContactContentProps) {
       <div className="flex flex-row items-center mt-4 justify-center">
         <EmailIcon />
         <p className="ml-1 text-[color:var(--light)] text-[24px]">
-          lighthouse@gmail.com
+          hey@builtwithatlas.com
         </p>
       </div>
       {root && (
         <div className="mt-6 flex justify-center">
           <PopupButton
-            url="https://calendly.com/dreifusjack"
+            url="https://calendly.com/dimitri-builtwithatlas/intro"
             rootElement={root}
             text="Schedule a call!"
             className="bg-[var(--red)] text-[var(--light)] px-4 py-4 rounded-3xl cursor-pointer flex items-center transition-all duration-300
