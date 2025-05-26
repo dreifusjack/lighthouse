@@ -89,7 +89,19 @@ export default function Navbar() {
   const scrollToSection = (sectionId: SectionName) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      section.scrollIntoView({ behavior: "smooth" });
+      if (sectionId === "mission") {
+        const missionOffset = 200; // special offset for mission (smaller) section
+
+        const elementPosition =
+          section.getBoundingClientRect().top + window.scrollY;
+
+        window.scrollTo({
+          top: elementPosition - missionOffset,
+          behavior: "smooth",
+        });
+      } else {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
       setScrollActiveSection(sectionId);
     }
   };
