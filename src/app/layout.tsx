@@ -1,6 +1,6 @@
-import type { Metadata } from "next";
 import { gasoekOne, bricolageGrotesque } from "./fonts";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner";
 
 export const metadata = {
   title: "Lighthouse",
@@ -39,7 +39,10 @@ export default function RootLayout({
       lang="en"
       className={`${gasoekOne.variable} ${bricolageGrotesque.variable} `}
     >
-      <body>{children}</body>
+      <body>
+        {children}
+        <Toaster />
+      </body>
     </html>
   );
 }

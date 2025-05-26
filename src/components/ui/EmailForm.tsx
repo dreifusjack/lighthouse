@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { toast } from "sonner";
 
 interface FormData {
   firstName: string;
@@ -42,7 +43,7 @@ export default function EmailForm() {
     });
 
     // Show success message or redirect
-    alert("Thank you for your message! We will get back to you soon.");
+    toast.success("Thank you for your message! We'll get back to you soon.");
   };
 
   return (
