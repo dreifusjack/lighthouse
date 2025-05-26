@@ -16,11 +16,11 @@ export function PartnerStep({
   isHighlighted,
 }: PartnerStepProps) {
   const textColorClass = isHighlighted
-    ? "text-[var(--light)]"
-    : "text-[#e2e6e9]";
+    ? "text-[var(--charcoal)]"
+    : "text-[var(--light)]";
   const borderColorClass = isHighlighted
-    ? "border-[var(--light)]"
-    : "border-[#e2e6e9]";
+    ? "border-[var(--charcoal)]"
+    : "border-[var(--light)]";
 
   return (
     <div
