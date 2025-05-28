@@ -4,7 +4,8 @@ import { Toaster } from "@/components/ui/sonner";
 
 export const metadata = {
   title: "Lighthouse",
-  description: "Your website description",
+  description:
+    "Lighthouse is a Product Studio and SaaS Launcher. We buy, build, and scale software tools. ",
   icons: {
     icon: [
       { url: "/favicon.ico" },
