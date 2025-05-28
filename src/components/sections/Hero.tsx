@@ -20,7 +20,7 @@ export default function Hero() {
             We Buy & Build Software Tools For Entreprenuers
           </h1>
         </div>
-        <p className=" max-w-xl">
+        <p className="text-[var(--light)] max-w-xl">
           We work with founders to grow products. By partnering with Lighthouse
           you can skip managing a team and focus on what you enjoy, building.{" "}
         </p>
