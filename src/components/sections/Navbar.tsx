@@ -50,7 +50,7 @@ export default function Navbar() {
       if (
         (scrollPosn >= 0 && scrollPosn < 600) ||
         (scrollPosn >= 1975 && scrollPosn < 2850) ||
-        scrollPosn >= 3550
+        scrollPosn >= 3950
       ) {
         setLighthouseTextColor("var(--light)");
       } else {
@@ -65,7 +65,7 @@ export default function Navbar() {
         newSection = "about";
       } else if (scrollPosn < 2850) {
         newSection = "partner";
-      } else if (scrollPosn < 3550) {
+      } else if (scrollPosn < 3950) {
         newSection = "mission";
       } else {
         newSection = "contact";
@@ -100,19 +100,7 @@ export default function Navbar() {
   const scrollToSection = (sectionId: SectionName) => {
     const section = document.getElementById(sectionId);
     if (section) {
-      if (sectionId === "mission") {
-        const missionOffset = 200; // special offset for mission (smaller) section
-
-        const elementPosition =
-          section.getBoundingClientRect().top + window.scrollY;
-
-        window.scrollTo({
-          top: elementPosition - missionOffset,
-          behavior: "smooth",
-        });
-      } else {
-        section.scrollIntoView({ behavior: "smooth" });
-      }
+      section.scrollIntoView({ behavior: "smooth" });
       setScrollActiveSection(sectionId);
     }
   };
