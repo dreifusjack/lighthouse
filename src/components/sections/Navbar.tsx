@@ -13,6 +13,7 @@ export default function Navbar() {
   const [scrollActiveSection, setScrollActiveSection] =
     useState<SectionName>("home");
   const [isHovering, setIsHovering] = useState(false);
+  const [isPartnerHovered, setIsPartnerHovered] = useState(false);
   const [activeIndicator, setActiveIndicator] = useState({
     left: 0,
     width: 0,
@@ -70,6 +71,8 @@ export default function Navbar() {
         newSection = "contact";
       }
 
+      checkPartnerHovering(scrollPosn);
+
       setScrollActiveSection(newSection);
 
       if (!isHovering) {
@@ -85,6 +88,14 @@ export default function Navbar() {
       window.removeEventListener("resize", handleScroll);
     };
   }, [isHovering]);
+
+  const checkPartnerHovering = (scrollPosn: number) => {
+    if (scrollPosn > 1975 && scrollPosn < 2850) {
+      setIsPartnerHovered(true);
+    } else {
+      setIsPartnerHovered(false);
+    }
+  };
 
   const scrollToSection = (sectionId: SectionName) => {
     const section = document.getElementById(sectionId);
@@ -132,7 +143,9 @@ export default function Navbar() {
       >
         <Image src="/lighthouse_logo.png" alt="" width={50} height={50} />
         <h1
-          className="text-4xl transition-colors duration-300"
+          className={`text-4xl transition-all duration-300 ${
+            isPartnerHovered ? "opacity-0" : "opacity-100"
+          }`}
           style={{ color: lighthouseTextColor }}
         >
           Lighthouse
