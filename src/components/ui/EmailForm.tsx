@@ -63,7 +63,7 @@ export default function EmailForm() {
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
-              placeholder="First Name"
+              placeholder="First Name*"
               className="w-full px-5 py-4 bg-[var(--light)]/10 text-[var(--light)] 
                          border-2 border-[var(--light)]/30 rounded-lg 
                          placeholder-[var(--light)]/60 focus:outline-none 
@@ -77,7 +77,7 @@ export default function EmailForm() {
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              placeholder="Last Name"
+              placeholder="Last Name*"
               className="w-full px-5 py-4 bg-[var(--light)]/10 text-[var(--light)] 
                          border-2 border-[var(--light)]/30 rounded-lg 
                          placeholder-[var(--light)]/60 focus:outline-none 
@@ -91,7 +91,7 @@ export default function EmailForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              placeholder="Email"
+              placeholder="Email*"
               className="w-full px-5 py-4 bg-[var(--light)]/10 text-[var(--light)] 
                          border-2 border-[var(--light)]/30 rounded-lg 
                          placeholder-[var(--light)]/60 focus:outline-none 
@@ -106,7 +106,7 @@ export default function EmailForm() {
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Describe your company situation or why you're reaching out"
+            placeholder="Describe your company situation or why you're reaching out*"
             rows={8}
             className="w-full px-5 py-4 bg-[var(--light)]/10 text-[var(--light)] 
                        border-2 border-[var(--light)]/30 rounded-lg 

@@ -47,11 +47,7 @@ export default function Navbar() {
       const scrollPosn = window.scrollY;
 
       // Lighthouse text color logic
-      if (
-        (scrollPosn >= 0 && scrollPosn < 600) ||
-        (scrollPosn >= 1975 && scrollPosn < 2850) ||
-        scrollPosn >= 3950
-      ) {
+      if ((scrollPosn >= 0 && scrollPosn < 600) || scrollPosn >= 3950) {
         setLighthouseTextColor("var(--light)");
       } else {
         setLighthouseTextColor("var(--charcoal)");

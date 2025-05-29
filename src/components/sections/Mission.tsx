@@ -46,7 +46,7 @@ export default function Mission() {
               }}
               className="bg-white p-8 rounded-lg shadow-md"
             >
-              <h2 className="text-2xl mb-4">{point.title}</h2>
+              <p className="text-4xl font-bold mb-4">{point.title}</p>
               <p className="text-lg leading-relaxed">{point.content}</p>
             </AnimateOnScroll>
           ))}
