@@ -18,6 +18,8 @@ export default function EmailForm() {
     referralSource: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -28,22 +30,47 @@ export default function EmailForm() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Add your form submission logic here
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
 
-    // Reset form after submission
-    setFormData({
-      firstName: "",
-      lastName: "",
-      email: "",
-      message: "",
-      referralSource: "",
-    });
+    try {
+      // Call the API endpoint to send the email
+      const response = await fetch("/api/send-email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-    // Show success message or redirect
-    toast.success("Thank you for your message! We'll get back to you soon.");
+      // Handle response
+      const result = await response.json();
+
+      if (!response.ok) {
+        throw new Error(result.error || "Failed to send email");
+      }
+
+      // Reset form after successful submission
+      setFormData({
+        firstName: "",
+        lastName: "",
+        email: "",
+        message: "",
+        referralSource: "",
+      });
+
+      // Show success message
+      toast.success("Thank you for your message! We'll get back to you soon.");
+    } catch (error) {
+      // Show error message
+      console.error("Form submission error:", error);
+      toast.error(
+        "Sorry, there was a problem sending your message. Please try again later."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -63,6 +90,7 @@ export default function EmailForm() {
                          placeholder-[var(--light)]/60 focus:outline-none 
                          focus:ring-2 focus:ring-[var(--red)]/70 text-sm md:text-lg"
               required
+              disabled={isSubmitting}
             />
           </div>
           <div className="relative">
@@ -77,6 +105,7 @@ export default function EmailForm() {
                          placeholder-[var(--light)]/60 focus:outline-none 
                          focus:ring-2 focus:ring-[var(--red)]/70 text-sm md:text-lg"
               required
+              disabled={isSubmitting}
             />
           </div>
           <div className="relative">
@@ -91,6 +120,7 @@ export default function EmailForm() {
                          placeholder-[var(--light)]/60 focus:outline-none 
                          focus:ring-2 focus:ring-[var(--red)]/70 text-sm md:text-lg"
               required
+              disabled={isSubmitting}
             />
           </div>
         </div>
@@ -107,6 +137,7 @@ export default function EmailForm() {
                        placeholder-[var(--light)]/60 focus:outline-none 
                        focus:ring-2 focus:ring-[var(--red)]/70 resize-none text-sm md:text-lg"
             required
+            disabled={isSubmitting}
           />
         </div>
         {/* Third row - Referral source */}
@@ -121,16 +152,19 @@ export default function EmailForm() {
                        border-2 border-[var(--light)]/30 rounded-lg 
                        placeholder-[var(--light)]/60 focus:outline-none 
                        focus:ring-2 focus:ring-[var(--red)]/70 text-sm md:text-lg"
+            disabled={isSubmitting}
           />
         </div>
         {/* Submit button */}
         <div className="flex justify-center md:justify-end mb-8">
           <button
             type="submit"
-            className="bg-[var(--red)] text-[var(--light)] pb-6 px-6 md:px-4 py-3 md:py-4 rounded-3xl cursor-pointer flex items-center transition-all duration-300 text-sm md:text-base
-                hover:shadow-lg hover:transform hover:scale-105 active:scale-95"
+            disabled={isSubmitting}
+            className={`bg-[var(--red)] text-[var(--light)] px-6 md:px-4 py-3 md:py-4 rounded-3xl cursor-pointer flex items-center transition-all duration-300 text-sm md:text-base
+                hover:shadow-lg hover:transform hover:scale-105 active:scale-95
+                ${isSubmitting ? "opacity-70 cursor-not-allowed" : ""}`}
           >
-            Submit
+            {isSubmitting ? "Sending..." : "Submit"}
           </button>
         </div>
       </form>
