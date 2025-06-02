@@ -55,7 +55,6 @@ export default function PartnerContent() {
         isWideScreenThreshold ? "flex" : "block"
       } px-4 sm:px-6 lg:px-8 py-6`}
     >
-      {/* Text content */}
       <div
         className={`${
           isWideScreenThreshold ? "w-1/2" : "w-full"
@@ -80,9 +79,7 @@ export default function PartnerContent() {
         ))}
       </div>
 
-      {/* Polygons with same overlapping behavior in both layouts */}
       {isWideScreenThreshold ? (
-        // Desktop layout
         <div className="relative w-1/2 ml-[15%] mt-[10%]">
           {reverseSteps.map((step, index) => (
             <div

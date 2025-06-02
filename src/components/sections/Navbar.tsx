@@ -21,7 +21,9 @@ export default function Navbar() {
     width: 0,
     height: 0,
   });
-  const [showNavbar, setShowNavbar] = useState(true);
+
+  // Layout detection
+  const [isDesktopView, setIsDesktopView] = useState<boolean | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const NAVBAR_BREAKPOINT = 1245;
@@ -34,8 +36,17 @@ export default function Navbar() {
     contact: useRef<HTMLLIElement>(null),
   };
 
+  // Initialize layout detection
   useEffect(() => {
-    if (navRefs[activeSection]?.current) {
+    if (isDesktopView === null) {
+      const width = window.innerWidth;
+      setIsDesktopView(width >= NAVBAR_BREAKPOINT);
+    }
+  }, [isDesktopView]);
+
+  // Active indicator calculation
+  useEffect(() => {
+    if (navRefs[activeSection]?.current && isDesktopView) {
       const activeNavItem = navRefs[activeSection].current;
       const activeNavDims = activeNavItem.getBoundingClientRect();
       const highlighterPadding = 20;
@@ -46,15 +57,16 @@ export default function Navbar() {
         height: activeNavDims.height,
       });
     }
-  }, [activeSection]);
+  }, [activeSection, isDesktopView]);
 
+  // Resize and scroll handling
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      const hamburgerThreshold = width >= NAVBAR_BREAKPOINT;
-      setShowNavbar(hamburgerThreshold);
+      const isDesktop = width >= NAVBAR_BREAKPOINT;
+      setIsDesktopView(isDesktop);
 
-      if (hamburgerThreshold && mobileMenuOpen) {
+      if (isDesktop && mobileMenuOpen) {
         setMobileMenuOpen(false);
       }
     };
@@ -100,7 +112,6 @@ export default function Navbar() {
     window.addEventListener("resize", handleResize);
 
     handleScroll();
-    handleResize();
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -150,6 +161,17 @@ export default function Navbar() {
     { name: "contact", label: "Contact" },
   ];
 
+  // Wait for desktop or mobile view to be set
+  if (isDesktopView === null) {
+    return (
+      <nav className="flex justify-between bg-transparent items-center fixed top-2 md:top-5 left-0 w-full z-50 px-2 md:px-4 py-2">
+        <div className="flex items-center">
+          <Image src="/lighthouse_logo.png" alt="" width={50} height={50} />
+        </div>
+      </nav>
+    );
+  }
+
   return (
     <>
       <nav className="flex justify-between bg-transparent items-center fixed top-2 md:top-5 left-0 w-full z-50 px-2 md:px-4 py-2">
@@ -160,7 +182,7 @@ export default function Navbar() {
           <Image src="/lighthouse_logo.png" alt="" width={50} height={50} />
           <h1
             className={`text-2xl md:text-4xl transition-all duration-300 ml-2 ${
-              isPartnerHovered || !showNavbar ? "opacity-0" : "opacity-100"
+              isPartnerHovered || !isDesktopView ? "opacity-0" : "opacity-100"
             }`}
             style={{ color: lighthouseTextColor }}
           >
@@ -168,7 +190,7 @@ export default function Navbar() {
           </h1>
         </div>
 
-        {showNavbar ? (
+        {isDesktopView ? (
           <>
             <Box
               width="650px"
@@ -224,8 +246,9 @@ export default function Navbar() {
           />
         )}
       </nav>
+
       <HamburgerMenu
-        isOpen={mobileMenuOpen}
+        isOpen={mobileMenuOpen && !isDesktopView}
         navItems={navItems}
         activeSection={scrollActiveSection}
         onNavItemClick={scrollToSection}

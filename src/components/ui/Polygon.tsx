@@ -5,7 +5,6 @@ interface PolygonProps {
 }
 
 export function Polygon({ isFilled, label, size = "wide" }: PolygonProps) {
-  // Define different sizes for the polygon based on screen size
   const getSvgDimensions = () => {
     switch (size) {
       case "slim":
@@ -26,7 +25,6 @@ export function Polygon({ isFilled, label, size = "wide" }: PolygonProps) {
 
   const { width, height, points } = getSvgDimensions();
 
-  // Adjust text position based on size
   const getTextPosition = () => {
     const x = "90%";
     switch (size) {
