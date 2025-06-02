@@ -20,12 +20,12 @@ export default function AboutModule({
   const linkTitle = title === "Invest" ? "Incubate" : title;
 
   return (
-    <div className="flex flex-col items-center justify-between w-full max-w-sm md:max-w-xs lg:max-w-sm h-auto md:h-75 p-6 md:p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
+    <div className="flex flex-col items-center justify-between w-full max-w-xs sm:max-w-sm md:max-w-xs lg:max-w-sm h-auto md:h-75 p-4 md:p-6">
       <div className="mb-4">{icon}</div>
-      <h1 className="text-xl md:text-2xl font-bold mb-4 text-center">
+      <h1 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-center">
         {title}
       </h1>
-      <p className="text-sm md:text-base text-center leading-relaxed mb-6 flex-grow">
+      <p className="text-sm md:text-base text-center leading-relaxed mb-4 md:mb-6 flex-grow">
         {content}
       </p>
       <div
@@ -38,7 +38,6 @@ export default function AboutModule({
           } else {
             scrollToContact();
           }
-          console.log("h");
         }}
       >
         <p

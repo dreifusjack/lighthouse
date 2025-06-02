@@ -51,10 +51,10 @@ export default function Navbar() {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      const isDesktop = width >= NAVBAR_BREAKPOINT;
-      setShowNavbar(isDesktop);
+      const hamburgerThreeshold = width >= NAVBAR_BREAKPOINT;
+      setShowNavbar(hamburgerThreeshold);
 
-      if (isDesktop && mobileMenuOpen) {
+      if (hamburgerThreeshold && mobileMenuOpen) {
         setMobileMenuOpen(false);
       }
     };
@@ -157,16 +157,10 @@ export default function Navbar() {
           className="flex items-center cursor-pointer"
           onClick={() => scrollToSection("home")}
         >
-          <Image
-            src="/lighthouse_logo.png"
-            alt=""
-            width={40}
-            height={40}
-            className="md:w-[50px] md:h-[50px]"
-          />
+          <Image src="/lighthouse_logo.png" alt="" width={50} height={50} />
           <h1
             className={`text-2xl md:text-4xl transition-all duration-300 ml-2 ${
-              isPartnerHovered ? "opacity-0" : "opacity-100"
+              isPartnerHovered || !showNavbar ? "opacity-0" : "opacity-100"
             }`}
             style={{ color: lighthouseTextColor }}
           >

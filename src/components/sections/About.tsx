@@ -1,4 +1,3 @@
-"use client";
 import AboutModule from "../ui/AboutModule";
 import Image from "next/image";
 import AnimateOnScroll from "../ui/AnimateOnScroll";
@@ -7,26 +6,27 @@ export default function About() {
   return (
     <section
       id="about"
-      className="h-250 bg-gradient-to-t from-[#ebf6fe] to-[#fcf6d7]"
+      className="py-16 md:py-24 lg:h-250 bg-gradient-to-t from-[var(--light)] to-[#fcf6d7]"
     >
-      <div className="h-250 flex flex-col justify-center items-center text-center">
-        <div className="max-w-2xl">
+      <div className="h-full flex flex-col justify-center items-center text-center px-4 md:px-8">
+        <div className="max-w-xl md:max-w-2xl mb-8 md:mb-12">
           <AnimateOnScroll animation="fade-up" delay={150}>
-            <p className="text-[40px] font-bold">
+            <p className="text-2xl sm:text-3xl md:text-[32px] lg:text-[40px] font-bold">
               Lighthouse is a{" "}
               <span className="font-extrabold">Launch Fund</span>
             </p>
           </AnimateOnScroll>
 
           <AnimateOnScroll animation="fade-up" delay={300}>
-            <p className="text-[35px] font-semibold pt-15">
+            <p className="text-xl sm:text-2xl md:text-[28px] lg:text-[35px] font-semibold pt-4 md:pt-15">
               We help founders turn their projects into lasting
               businesses—without the headaches of running a company.
             </p>
           </AnimateOnScroll>
         </div>
 
-        <div className="flex justify-between pt-40 gap-[200px] px-6">
+        {/* Module container - changes from row to column on smaller screens */}
+        <div className="flex flex-col md:flex-row md:justify-between pt-8 md:pt-16 lg:pt-40 gap-12 md:gap-8 lg:gap-[200px] px-6">
           <AnimateOnScroll animation="fade-up" delay={450}>
             <AboutModule
               icon={<Image src="/buy.png" alt="" width={50} height={50} />}
