@@ -20,7 +20,7 @@ export default function AboutModule({
   const linkTitle = title === "Invest" ? "Incubate" : title;
 
   return (
-    <div className="flex flex-col items-center justify-between w-full max-w-xs sm:max-w-sm md:max-w-xs lg:max-w-sm h-auto md:h-75 p-4 md:p-6">
+    <div className="flex flex-col items-center justify-between w-full">
       <div className="mb-4">{icon}</div>
       <h1 className="text-xl md:text-2xl font-bold mb-3 md:mb-4 text-center">
         {title}

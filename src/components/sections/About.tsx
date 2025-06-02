@@ -30,7 +30,7 @@ export default function About() {
             <AboutModule
               icon={<Image src="/buy.png" alt="" width={50} height={50} />}
               title="Buy"
-              content="If you love to build but don't enjoy everything else that comes along with running a business like admin tasks - then partner with us!"
+              content="If you love to build but don't enjoy everything else that comes along with running a business like admin tasks & management - then partner with us!"
               refrencesExternalLink={false}
             />
           </AnimateOnScroll>
