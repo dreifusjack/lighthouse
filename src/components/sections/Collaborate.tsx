@@ -11,8 +11,8 @@ export default function Collaborate() {
   }, []);
 
   return (
-    <section id="contact">
-      <div className="w-full h-screen flex items-center justify-center ">
+    <section id="contact" className="min-h-screen py-8 md:py-0">
+      <div className="w-full min-h-screen flex items-center justify-center px-4 md:px-0">
         <CenteredBox children={<ContactContent root={root} />} />
       </div>
     </section>

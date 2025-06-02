@@ -20,10 +20,14 @@ export default function AboutModule({
   const linkTitle = title === "Invest" ? "Incubate" : title;
 
   return (
-    <div className="flex flex-col items-center justify-between w-100 h-75">
-      {icon}
-      <h1>{title}</h1>
-      <p>{content}</p>
+    <div className="flex flex-col items-center justify-between w-full max-w-sm md:max-w-xs lg:max-w-sm h-auto md:h-75 p-6 md:p-4 bg-white/10 backdrop-blur-sm rounded-lg border border-white/20 hover:bg-white/20 transition-all duration-300">
+      <div className="mb-4">{icon}</div>
+      <h1 className="text-xl md:text-2xl font-bold mb-4 text-center">
+        {title}
+      </h1>
+      <p className="text-sm md:text-base text-center leading-relaxed mb-6 flex-grow">
+        {content}
+      </p>
       <div
         className="flex cursor-pointer items-center transition-all duration-200"
         onMouseEnter={() => setIsHovering(true)}
@@ -37,11 +41,17 @@ export default function AboutModule({
           console.log("h");
         }}
       >
-        <p className={isHovering ? "text-md font-medium" : "text-sm"}>
+        <p
+          className={`${
+            isHovering ? "text-md font-medium" : "text-sm"
+          } transition-all duration-200`}
+        >
           {linkTitle}
         </p>
         <KeyboardArrowRightIcon
-          className={isHovering ? "transform translate-x-1" : ""}
+          className={`${
+            isHovering ? "transform translate-x-1" : ""
+          } transition-transform duration-200`}
         />
       </div>
     </div>

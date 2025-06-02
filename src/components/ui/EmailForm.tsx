@@ -47,16 +47,10 @@ export default function EmailForm() {
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto pt-[40px]  ">
-      {" "}
-      {/* Increased max-width from 2xl to 4xl */}
-      <form onSubmit={handleSubmit} className="space-y-8">
-        {" "}
-        {/* Increased spacing between rows */}
+    <div className="w-full max-w-4xl mx-auto pt-6 md:pt-[40px] px-2 md:px-0">
+      <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
         {/* First row - First Name, Last Name, Email */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {" "}
-          {/* Increased gap from 4 to 6 */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           <div className="relative">
             <input
               type="text"
@@ -64,10 +58,10 @@ export default function EmailForm() {
               value={formData.firstName}
               onChange={handleChange}
               placeholder="First Name*"
-              className="w-full px-5 py-4 bg-[var(--light)]/10 text-[var(--light)] 
+              className="w-full px-3 md:px-5 py-3 md:py-4 bg-[var(--light)]/10 text-[var(--light)] 
                          border-2 border-[var(--light)]/30 rounded-lg 
                          placeholder-[var(--light)]/60 focus:outline-none 
-                         focus:ring-2 focus:ring-[var(--red)]/70 text-lg"
+                         focus:ring-2 focus:ring-[var(--red)]/70 text-sm md:text-lg"
               required
             />
           </div>
@@ -78,10 +72,10 @@ export default function EmailForm() {
               value={formData.lastName}
               onChange={handleChange}
               placeholder="Last Name*"
-              className="w-full px-5 py-4 bg-[var(--light)]/10 text-[var(--light)] 
+              className="w-full px-3 md:px-5 py-3 md:py-4 bg-[var(--light)]/10 text-[var(--light)] 
                          border-2 border-[var(--light)]/30 rounded-lg 
                          placeholder-[var(--light)]/60 focus:outline-none 
-                         focus:ring-2 focus:ring-[var(--red)]/70 text-lg"
+                         focus:ring-2 focus:ring-[var(--red)]/70 text-sm md:text-lg"
               required
             />
           </div>
@@ -92,10 +86,10 @@ export default function EmailForm() {
               value={formData.email}
               onChange={handleChange}
               placeholder="Email*"
-              className="w-full px-5 py-4 bg-[var(--light)]/10 text-[var(--light)] 
+              className="w-full px-3 md:px-5 py-3 md:py-4 bg-[var(--light)]/10 text-[var(--light)] 
                          border-2 border-[var(--light)]/30 rounded-lg 
                          placeholder-[var(--light)]/60 focus:outline-none 
-                         focus:ring-2 focus:ring-[var(--red)]/70 text-lg"
+                         focus:ring-2 focus:ring-[var(--red)]/70 text-sm md:text-lg"
               required
             />
           </div>
@@ -107,11 +101,11 @@ export default function EmailForm() {
             value={formData.message}
             onChange={handleChange}
             placeholder="Describe your company situation or why you're reaching out*"
-            rows={8}
-            className="w-full px-5 py-4 bg-[var(--light)]/10 text-[var(--light)] 
+            rows={6}
+            className="w-full px-3 md:px-5 py-3 md:py-4 bg-[var(--light)]/10 text-[var(--light)] 
                        border-2 border-[var(--light)]/30 rounded-lg 
                        placeholder-[var(--light)]/60 focus:outline-none 
-                       focus:ring-2 focus:ring-[var(--red)]/70 resize-none text-lg"
+                       focus:ring-2 focus:ring-[var(--red)]/70 resize-none text-sm md:text-lg"
             required
           />
         </div>
@@ -123,17 +117,17 @@ export default function EmailForm() {
             value={formData.referralSource}
             onChange={handleChange}
             placeholder="How did you hear about us?"
-            className="w-full px-5 py-4 bg-[var(--light)]/10 text-[var(--light)] 
+            className="w-full px-3 md:px-5 py-3 md:py-4 bg-[var(--light)]/10 text-[var(--light)] 
                        border-2 border-[var(--light)]/30 rounded-lg 
                        placeholder-[var(--light)]/60 focus:outline-none 
-                       focus:ring-2 focus:ring-[var(--red)]/70 text-lg"
+                       focus:ring-2 focus:ring-[var(--red)]/70 text-sm md:text-lg"
           />
         </div>
         {/* Submit button */}
-        <div className="flex justify-end">
+        <div className="flex justify-center md:justify-end mb-8">
           <button
             type="submit"
-            className="bg-[var(--red)] text-[var(--light)] px-4 py-4 rounded-3xl cursor-pointer flex items-center transition-all duration-300
+            className="bg-[var(--red)] text-[var(--light)] pb-6 px-6 md:px-4 py-3 md:py-4 rounded-3xl cursor-pointer flex items-center transition-all duration-300 text-sm md:text-base
                 hover:shadow-lg hover:transform hover:scale-105 active:scale-95"
           >
             Submit

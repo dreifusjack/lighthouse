@@ -6,6 +6,7 @@ export const metadata = {
   title: "Lighthouse",
   description:
     "Lighthouse is a Product Studio and SaaS Launcher. We buy, build, and scale software tools. ",
+  viewport: "width=device-width, initial-scale=1",
   icons: {
     icon: [
       { url: "/favicon.ico" },

@@ -120,14 +120,20 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="flex justify-between bg-transparent items-center fixed top-5 left-0 w-full z-50 px-4 py-2">
+    <nav className="flex justify-between bg-transparent items-center fixed top-2 md:top-5 left-0 w-full z-50 px-2 md:px-4 py-2">
       <div
         className="flex items-center cursor-pointer"
         onClick={() => scrollToSection("home")}
       >
-        <Image src="/lighthouse_logo.png" alt="" width={50} height={50} />
+        <Image
+          src="/lighthouse_logo.png"
+          alt=""
+          width={40}
+          height={40}
+          className="md:w-[50px] md:h-[50px]"
+        />
         <h1
-          className={`text-4xl transition-all duration-300 ${
+          className={`text-2xl md:text-4xl transition-all duration-300 ml-2 ${
             isPartnerHovered ? "opacity-0" : "opacity-100"
           }`}
           style={{ color: lighthouseTextColor }}
@@ -135,10 +141,12 @@ export default function Navbar() {
           Lighthouse
         </h1>
       </div>
+
+      {/* Desktop Navigation */}
       <Box
-        width="35%"
+        width={{ xs: "0%", md: "35%" }}
         height="65px"
-        display="flex"
+        display={{ xs: "none", md: "flex" }}
         justifyContent="center"
         alignItems="center"
         onMouseLeave={handleNavMouseLeave}
@@ -176,7 +184,11 @@ export default function Navbar() {
           ))}
         </ul>
       </Box>
-      <CTAButton />
+
+      {/* Mobile CTA Button */}
+      <div className="block md:block">
+        <CTAButton />
+      </div>
     </nav>
   );
 }
