@@ -13,7 +13,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Configure email transporter
+    // config email transporter
     const transporter = nodemailer.createTransport({
       service: 'gmail',  
       auth: {

@@ -24,7 +24,6 @@ export default function About() {
             </p>
           </AnimateOnScroll>
         </div>
-
         <div className="flex flex-col md:flex-row md:justify-between pt-8 md:pt-16 lg:pt-40 gap-12 md:gap-8 lg:gap-[200px] px-6">
           <AnimateOnScroll animation="fade-up" delay={450}>
             <AboutModule
@@ -34,7 +33,6 @@ export default function About() {
               refrencesExternalLink={false}
             />
           </AnimateOnScroll>
-
           <AnimateOnScroll animation="fade-up" delay={600}>
             <AboutModule
               icon={<Image src="/build.png" alt="" width={50} height={50} />}
@@ -43,7 +41,6 @@ export default function About() {
               refrencesExternalLink={true}
             />
           </AnimateOnScroll>
-
           <AnimateOnScroll animation="fade-up" delay={750}>
             <AboutModule
               icon={<Image src="/invest.png" alt="" width={50} height={50} />}

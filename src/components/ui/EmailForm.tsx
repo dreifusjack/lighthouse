@@ -35,7 +35,7 @@ export default function EmailForm() {
     setIsSubmitting(true);
 
     try {
-      // Call the API endpoint to send the email
+      // call email api
       const response = await fetch("/api/send-email", {
         method: "POST",
         headers: {
@@ -44,7 +44,6 @@ export default function EmailForm() {
         body: JSON.stringify(formData),
       });
 
-      // Handle response
       const result = await response.json();
 
       if (!response.ok) {
@@ -60,10 +59,8 @@ export default function EmailForm() {
         referralSource: "",
       });
 
-      // Show success message
       toast.success("Thank you for your message! We'll get back to you soon.");
     } catch (error) {
-      // Show error message
       console.error("Form submission error:", error);
       toast.error(
         "Sorry, there was a problem sending your message. Please try again later."
@@ -76,7 +73,6 @@ export default function EmailForm() {
   return (
     <div className="w-full max-w-4xl mx-auto pt-6 md:pt-[40px] px-2 md:px-0">
       <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
-        {/* First row - First Name, Last Name, Email */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
           <div className="relative">
             <input
@@ -124,7 +120,6 @@ export default function EmailForm() {
             />
           </div>
         </div>
-        {/* Second row - Message box */}
         <div className="relative">
           <textarea
             name="message"
@@ -140,7 +135,6 @@ export default function EmailForm() {
             disabled={isSubmitting}
           />
         </div>
-        {/* Third row - Referral source */}
         <div className="relative">
           <input
             type="text"
@@ -155,7 +149,6 @@ export default function EmailForm() {
             disabled={isSubmitting}
           />
         </div>
-        {/* Submit button */}
         <div className="flex justify-center md:justify-end mb-8">
           <button
             type="submit"

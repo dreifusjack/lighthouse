@@ -1,6 +1,6 @@
+import { Toaster } from "sonner";
 import { gasoekOne, bricolageGrotesque } from "./fonts";
 import "./globals.css";
-import { Toaster } from "@/components/ui/sonner";
 
 export const metadata = {
   title: "Lighthouse",

@@ -24,7 +24,7 @@ h6 {
   font-family: var(--font-header);
 }
 
-/* Responsive Typography */
+/* responsive tings */
 .responsive-title {
   font-size: clamp(2rem, 5vw, 3rem);
   line-height: 1.2;
