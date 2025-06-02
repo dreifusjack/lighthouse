@@ -5,6 +5,8 @@ import { useState, useEffect, useRef } from "react";
 import { Box } from "@mui/material";
 import NavItem from "../ui/NavItem";
 import { SectionName } from "@/utils";
+import MobileMenu from "../ui/MobileMenu";
+import HamburgerMenu from "../ui/HamburgerMenu";
 
 export default function Navbar() {
   const [lighthouseTextColor, setLighthouseTextColor] =
@@ -19,6 +21,10 @@ export default function Navbar() {
     width: 0,
     height: 0,
   });
+  const [showNavbar, setShowNavbar] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const NAVBAR_BREAKPOINT = 1245;
 
   const navRefs = {
     home: useRef<HTMLLIElement>(null),
@@ -43,11 +49,25 @@ export default function Navbar() {
   }, [activeSection]);
 
   useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      const isDesktop = width >= NAVBAR_BREAKPOINT;
+      setShowNavbar(isDesktop);
+
+      if (isDesktop && mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
+    };
+
     const handleScroll = () => {
       const scrollPosn = window.scrollY;
 
       // Lighthouse text color logic
-      if ((scrollPosn >= 0 && scrollPosn < 600) || scrollPosn >= 3950) {
+      if (
+        (scrollPosn >= 0 && scrollPosn < 950) ||
+        (scrollPosn > 2000 && scrollPosn < 2850) ||
+        scrollPosn >= 3950
+      ) {
         setLighthouseTextColor("var(--light)");
       } else {
         setLighthouseTextColor("var(--charcoal)");
@@ -57,7 +77,7 @@ export default function Navbar() {
       let newSection: SectionName = "home";
       if (scrollPosn < 950) {
         newSection = "home";
-      } else if (scrollPosn < 1975) {
+      } else if (scrollPosn < 2000) {
         newSection = "about";
       } else if (scrollPosn < 2850) {
         newSection = "partner";
@@ -77,13 +97,16 @@ export default function Navbar() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    window.addEventListener("resize", handleScroll);
+    window.addEventListener("resize", handleResize);
+
     handleScroll();
+    handleResize();
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("resize", handleResize);
     };
-  }, [isHovering]);
+  }, [isHovering, mobileMenuOpen]);
 
   const checkPartnerHovering = (scrollPosn: number) => {
     if (scrollPosn > 1975 && scrollPosn < 2850) {
@@ -98,6 +121,10 @@ export default function Navbar() {
     if (section) {
       section.scrollIntoView({ behavior: "smooth" });
       setScrollActiveSection(sectionId);
+
+      if (mobileMenuOpen) {
+        setMobileMenuOpen(false);
+      }
     }
   };
 
@@ -111,6 +138,10 @@ export default function Navbar() {
     setActiveSection(scrollActiveSection);
   };
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
+  };
+
   const navItems: Array<{ name: SectionName; label: string }> = [
     { name: "home", label: "Home" },
     { name: "about", label: "About Us" },
@@ -120,75 +151,97 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="flex justify-between bg-transparent items-center fixed top-2 md:top-5 left-0 w-full z-50 px-2 md:px-4 py-2">
-      <div
-        className="flex items-center cursor-pointer"
-        onClick={() => scrollToSection("home")}
-      >
-        <Image
-          src="/lighthouse_logo.png"
-          alt=""
-          width={40}
-          height={40}
-          className="md:w-[50px] md:h-[50px]"
-        />
-        <h1
-          className={`text-2xl md:text-4xl transition-all duration-300 ml-2 ${
-            isPartnerHovered ? "opacity-0" : "opacity-100"
-          }`}
-          style={{ color: lighthouseTextColor }}
-        >
-          Lighthouse
-        </h1>
-      </div>
-
-      {/* Desktop Navigation */}
-      <Box
-        width={{ xs: "0%", md: "35%" }}
-        height="65px"
-        display={{ xs: "none", md: "flex" }}
-        justifyContent="center"
-        alignItems="center"
-        onMouseLeave={handleNavMouseLeave}
-        sx={{
-          backgroundColor: `rgba(254, 250, 240, 0.27)`,
-          backdropFilter: `blur(10px)`,
-          WebkitBackdropFilter: `blur(10px)`,
-          zIndex: 500,
-          border: "1px solid black",
-          borderRadius: "10px",
-          position: "relative",
-          overflow: "hidden",
-        }}
-      >
+    <>
+      <nav className="flex justify-between bg-transparent items-center fixed top-2 md:top-5 left-0 w-full z-50 px-2 md:px-4 py-2">
         <div
-          className="absolute bg-white/30 rounded-2xl transition-all duration-300 ease-in-out"
-          style={{
-            left: activeIndicator.left,
-            width: activeIndicator.width,
-            height: activeIndicator.height,
-            zIndex: 0,
-          }}
-        />
-        <ul className="flex flex-row space-x-3 relative z-10">
-          {navItems.map((item) => (
-            <NavItem
-              key={item.name}
-              sectionName={item.name}
-              label={item.label}
-              activeSection={activeSection}
-              ref={navRefs[item.name]}
-              onMouseEnter={handleNavMouseEnter}
-              onClick={scrollToSection}
-            />
-          ))}
-        </ul>
-      </Box>
+          className="flex items-center cursor-pointer"
+          onClick={() => scrollToSection("home")}
+        >
+          <Image
+            src="/lighthouse_logo.png"
+            alt=""
+            width={40}
+            height={40}
+            className="md:w-[50px] md:h-[50px]"
+          />
+          <h1
+            className={`text-2xl md:text-4xl transition-all duration-300 ml-2 ${
+              isPartnerHovered ? "opacity-0" : "opacity-100"
+            }`}
+            style={{ color: lighthouseTextColor }}
+          >
+            Lighthouse
+          </h1>
+        </div>
 
-      {/* Mobile CTA Button */}
-      <div className="block md:block">
-        <CTAButton />
-      </div>
-    </nav>
+        {/* Wide Desktop Nav */}
+        {showNavbar && (
+          <>
+            <Box
+              width="650px"
+              height="65px"
+              sx={{
+                backgroundColor: `rgba(254, 250, 240, 0.27)`,
+                backdropFilter: `blur(10px)`,
+                WebkitBackdropFilter: `blur(10px)`,
+                zIndex: 500,
+                border: "1px solid black",
+                borderRadius: "10px",
+                position: "relative",
+                overflow: "hidden",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+              onMouseLeave={handleNavMouseLeave}
+            >
+              <div
+                className="absolute bg-white/30 rounded-2xl transition-all duration-300 ease-in-out"
+                style={{
+                  left: activeIndicator.left,
+                  width: activeIndicator.width,
+                  height: activeIndicator.height,
+                  zIndex: 0,
+                }}
+              />
+              <ul className="flex flex-row space-x-3 relative z-10">
+                {navItems.map((item) => (
+                  <NavItem
+                    key={item.name}
+                    sectionName={item.name}
+                    label={item.label}
+                    activeSection={activeSection}
+                    ref={navRefs[item.name]}
+                    onMouseEnter={handleNavMouseEnter}
+                    onClick={scrollToSection}
+                  />
+                ))}
+              </ul>
+            </Box>
+            <div className="block">
+              <CTAButton />
+            </div>
+          </>
+        )}
+
+        {/* Narrow Desktop Nav */}
+        {!showNavbar && (
+          <HamburgerMenu
+            isOpen={mobileMenuOpen}
+            toggleOpen={toggleMobileMenu}
+            className="ml-auto"
+            color={lighthouseTextColor}
+          />
+        )}
+      </nav>
+
+      {/* Mobile Nav */}
+      <MobileMenu
+        isOpen={mobileMenuOpen}
+        navItems={navItems}
+        activeSection={scrollActiveSection}
+        onNavItemClick={scrollToSection}
+      />
+    </>
   );
 }
