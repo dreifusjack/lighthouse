@@ -242,7 +242,6 @@ export default function Navbar() {
             isOpen={mobileMenuOpen}
             toggleOpen={toggleMobileMenu}
             className="ml-auto"
-            color={lighthouseTextColor}
           />
         )}
       </nav>

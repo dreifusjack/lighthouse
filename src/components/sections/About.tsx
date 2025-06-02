@@ -25,7 +25,6 @@ export default function About() {
           </AnimateOnScroll>
         </div>
 
-        {/* Module container - changes from row to column on smaller screens */}
         <div className="flex flex-col md:flex-row md:justify-between pt-8 md:pt-16 lg:pt-40 gap-12 md:gap-8 lg:gap-[200px] px-6">
           <AnimateOnScroll animation="fade-up" delay={450}>
             <AboutModule
