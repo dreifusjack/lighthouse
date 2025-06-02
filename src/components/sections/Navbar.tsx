@@ -5,8 +5,8 @@ import { useState, useEffect, useRef } from "react";
 import { Box } from "@mui/material";
 import NavItem from "../ui/NavItem";
 import { SectionName } from "@/utils";
-import MobileMenu from "../ui/MobileMenu";
 import HamburgerIcon from "../ui/HamburgerIcon";
+import HamburgerMenu from "../ui/HamburgerMenu";
 
 export default function Navbar() {
   const [lighthouseTextColor, setLighthouseTextColor] =
@@ -174,8 +174,7 @@ export default function Navbar() {
           </h1>
         </div>
 
-        {/* Wide Desktop Nav */}
-        {showNavbar && (
+        {showNavbar ? (
           <>
             <Box
               width="650px"
@@ -222,10 +221,7 @@ export default function Navbar() {
               <CTAButton />
             </div>
           </>
-        )}
-
-        {/* Narrow Desktop Nav */}
-        {!showNavbar && (
+        ) : (
           <HamburgerIcon
             isOpen={mobileMenuOpen}
             toggleOpen={toggleMobileMenu}
@@ -234,9 +230,7 @@ export default function Navbar() {
           />
         )}
       </nav>
-
-      {/* Mobile Nav */}
-      <MobileMenu
+      <HamburgerMenu
         isOpen={mobileMenuOpen}
         navItems={navItems}
         activeSection={scrollActiveSection}

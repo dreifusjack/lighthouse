@@ -1,20 +1,19 @@
 import React, { useEffect } from "react";
-import CTAButton from "../ui/CTAButton";
 import { SectionName } from "@/utils";
 
-interface MobileMenuProps {
+interface HamburgerMenuProps {
   isOpen: boolean;
   navItems: Array<{ name: SectionName; label: string }>;
   activeSection: SectionName;
   onNavItemClick: (section: SectionName) => void;
 }
 
-export default function MobileMenu({
+export default function HamburgerMenu({
   isOpen,
   navItems,
   activeSection,
   onNavItemClick,
-}: MobileMenuProps) {
+}: HamburgerMenuProps) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
