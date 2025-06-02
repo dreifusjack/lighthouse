@@ -10,7 +10,7 @@ export default function CenteredBox({ children }: CenteredBoxProps) {
       style={{
         backgroundColor: "var(--blue)",
       }}
-      className="w-full md:w-22/23 h-auto md:h-11/12 min-h-[80vh] md:min-h-0 rounded-lg md:rounded-none"
+      className="w-full md:w-22/23 h-auto md:h-11/12 min-h-[80vh] md:min-h-0 "
     >
       {children}
     </div>

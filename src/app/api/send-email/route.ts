@@ -34,7 +34,7 @@ export async function POST(req: Request) {
 
     const mailOptions = {
       from: process.env.EMAIL_USER,
-      to: 'dreifusjack@gmail.com',
+      to: 'dimitri@builtwithatlas.com',
       subject: `New Lighthouse Form Submission from ${firstName} ${lastName}`,
       html: emailContent,
       replyTo: email,
