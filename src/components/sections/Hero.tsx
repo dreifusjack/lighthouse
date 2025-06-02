@@ -5,11 +5,29 @@ import Image from "next/image";
 
 export default function Hero() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(0);
 
   useEffect(() => {
-    // Trigger animations after component mounts
     setIsLoaded(true);
+    setWindowWidth(window.innerWidth);
+
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
+
+  const getPositionStyles = () => {
+    if (windowWidth >= 1024) {
+      return { objectPosition: "center center" };
+    } else {
+      return { objectPosition: "40% center" };
+    }
+  };
 
   return (
     <section
@@ -21,12 +39,14 @@ export default function Hero() {
           src="/hero_background.png"
           alt="Lighthouse on cliff"
           fill
+          priority
           style={{
             objectFit: "cover",
             transform: isLoaded ? "scale(1)" : "scale(1.05)",
-            transition: "transform 1.2s ease-out",
+            transition:
+              "transform 1.2s ease-out, object-position 0.5s ease-out",
+            ...getPositionStyles(),
           }}
-          priority
           onLoadingComplete={() => setIsLoaded(true)}
         />
       </div>
