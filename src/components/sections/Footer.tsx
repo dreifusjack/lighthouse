@@ -34,20 +34,6 @@ export default function Footer() {
             2025 Lighthouse. All Rights Reserved.
           </p>
         </div>
-        <p className="text-center mt-2 text-sm md:text-base">
-          Design & Development:{" "}
-          <span
-            className="underline cursor-pointer hover:text-[var(--blue)] transition-colors"
-            onClick={() => {
-              window.open(
-                "https://www.linkedin.com/in/jack-dreifus/",
-                "_blank"
-              );
-            }}
-          >
-            Jack Dreifus
-          </span>
-        </p>
       </div>
     </div>
   );
