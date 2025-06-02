@@ -51,10 +51,10 @@ export default function Navbar() {
   useEffect(() => {
     const handleResize = () => {
       const width = window.innerWidth;
-      const hamburgerThreeshold = width >= NAVBAR_BREAKPOINT;
-      setShowNavbar(hamburgerThreeshold);
+      const hamburgerThreshold = width >= NAVBAR_BREAKPOINT;
+      setShowNavbar(hamburgerThreshold);
 
-      if (hamburgerThreeshold && mobileMenuOpen) {
+      if (hamburgerThreshold && mobileMenuOpen) {
         setMobileMenuOpen(false);
       }
     };

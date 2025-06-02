@@ -1,10 +1,23 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { PartnerStep } from "./PartnerStep";
 import { Polygon } from "./Polygon";
 
 export default function PartnerContent() {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
+  const [isWideScreenThreshold, setIsWideScreenThreshold] = useState(true);
+
+  const LAYOUT_BREAKPOINT = 1475;
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsWideScreenThreshold(window.innerWidth >= LAYOUT_BREAKPOINT);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   let count = 1;
   const steps = [
@@ -31,13 +44,27 @@ export default function PartnerContent() {
   ];
   const reverseSteps = [...steps].reverse();
 
+  // Calculate spacing based on polygon size
+  const getPolygonSpacing = () => {
+    return isWideScreenThreshold ? 130 : 100;
+  };
+
   return (
-    <div className="flex">
-      <div className="ps-[60px]">
-        <h1 className="text-[color:var(--light)] text-[48px] pt-[20px] pb-[20px]">
+    <div
+      className={`w-full ${
+        isWideScreenThreshold ? "flex" : "block"
+      } px-4 sm:px-6 lg:px-8 py-6`}
+    >
+      {/* Text content */}
+      <div
+        className={`${
+          isWideScreenThreshold ? "w-1/2" : "w-full"
+        } pl-0 sm:pl-4 lg:pl-[60px]`}
+      >
+        <h1 className="text-[color:var(--light)] text-3xl md:text-4xl lg:text-[48px] pt-[10px] lg:pt-[20px] pb-[10px] lg:pb-[20px]">
           Partner With Us!
         </h1>
-        <hr className="border-t-2 border-[var(--light)] w-[700px]" />
+        <hr className="border-t-2 border-[var(--light)] w-full max-w-[700px]" />
         {steps.map((step, index) => (
           <div
             key={index}
@@ -52,22 +79,60 @@ export default function PartnerContent() {
           </div>
         ))}
       </div>
-      <div className="relative ml-[15%] mt-[10%]">
-        {reverseSteps.map((step, index) => (
+
+      {/* Polygons with same overlapping behavior in both layouts */}
+      {isWideScreenThreshold ? (
+        // Desktop layout
+        <div className="relative w-1/2 ml-[15%] mt-[10%]">
+          {reverseSteps.map((step, index) => (
+            <div
+              key={index}
+              className="absolute"
+              style={{
+                top: `${index * getPolygonSpacing()}px`,
+                zIndex: steps.length - index,
+              }}
+              onMouseEnter={() => setHoveredStep(step.num)}
+              onMouseLeave={() => setHoveredStep(null)}
+            >
+              <Polygon
+                isFilled={hoveredStep === step.num}
+                label={step.label}
+                size="wide"
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <div className="w-full mt-12 mb-8">
           <div
-            key={index}
-            className="absolute"
+            className="relative mx-auto"
             style={{
-              top: `${index * 130}px`,
-              zIndex: steps.length - index,
+              height: `${reverseSteps.length * getPolygonSpacing() + 65}px`,
+              width: "100%",
             }}
-            onMouseEnter={() => setHoveredStep(step.num)}
-            onMouseLeave={() => setHoveredStep(null)}
           >
-            <Polygon isFilled={hoveredStep === step.num} label={step.label} />
+            {reverseSteps.map((step, index) => (
+              <div
+                key={index}
+                className="absolute left-1/2 transform -translate-x-1/2"
+                style={{
+                  top: `${index * getPolygonSpacing()}px`,
+                  zIndex: steps.length - index,
+                }}
+                onMouseEnter={() => setHoveredStep(step.num)}
+                onMouseLeave={() => setHoveredStep(null)}
+              >
+                <Polygon
+                  isFilled={hoveredStep === step.num}
+                  label={step.label}
+                  size="slim"
+                />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

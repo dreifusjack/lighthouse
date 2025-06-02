@@ -1,15 +1,49 @@
 interface PolygonProps {
   isFilled: boolean;
   label: string;
+  size?: "slim" | "wide";
 }
 
-export function Polygon({ isFilled, label }: PolygonProps) {
-  const diamondPoints = "220.5,10 450,110 220.5,210 0,110";
+export function Polygon({ isFilled, label, size = "wide" }: PolygonProps) {
+  // Define different sizes for the polygon based on screen size
+  const getSvgDimensions = () => {
+    switch (size) {
+      case "slim":
+        return {
+          width: 450,
+          height: 165,
+          points: "165.4,7.5 337.5,82.5 165.4,157.5 0,82.5",
+        };
+      case "wide":
+      default:
+        return {
+          width: 600,
+          height: 220,
+          points: "220.5,10 450,110 220.5,210 0,110",
+        };
+    }
+  };
+
+  const { width, height, points } = getSvgDimensions();
+
+  // Adjust text position based on size
+  const getTextPosition = () => {
+    const x = "90%";
+    switch (size) {
+      case "slim":
+        return { x, fontSize: "12px" };
+      case "wide":
+      default:
+        return { x, fontSize: "18px" };
+    }
+  };
+
+  const { x, fontSize } = getTextPosition();
 
   return (
-    <svg width="600" height="220" className=" duration-300">
+    <svg width={width} height={height} className="duration-300">
       <polygon
-        points={diamondPoints}
+        points={points}
         className="transition-all duration-300 cursor-pointer"
         style={
           isFilled
@@ -22,11 +56,12 @@ export function Polygon({ isFilled, label }: PolygonProps) {
         }
       />
       <text
-        x="90%"
+        x={x}
         y="50%"
         dominantBaseline="middle"
         textAnchor="middle"
         fill="var(--light)"
+        style={{ fontSize }}
       >
         {label}
       </text>
