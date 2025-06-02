@@ -6,7 +6,7 @@ import { Box } from "@mui/material";
 import NavItem from "../ui/NavItem";
 import { SectionName } from "@/utils";
 import MobileMenu from "../ui/MobileMenu";
-import HamburgerMenu from "../ui/HamburgerMenu";
+import HamburgerIcon from "../ui/HamburgerIcon";
 
 export default function Navbar() {
   const [lighthouseTextColor, setLighthouseTextColor] =
@@ -226,7 +226,7 @@ export default function Navbar() {
 
         {/* Narrow Desktop Nav */}
         {!showNavbar && (
-          <HamburgerMenu
+          <HamburgerIcon
             isOpen={mobileMenuOpen}
             toggleOpen={toggleMobileMenu}
             className="ml-auto"
