@@ -6,18 +6,26 @@ import { Polygon } from "./Polygon";
 export default function PartnerContent() {
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
   const [isWideScreenThreshold, setIsWideScreenThreshold] = useState(true);
+  const [isSmallScreenThreshold, setIsSmallScreenThreshold] = useState(false);
+  const [hasInitialized, setHasInitialized] = useState(false);
 
-  const LAYOUT_BREAKPOINT = 1475;
+  const MEDIUM_BREAKPOINT = 1475;
+  const SMALL_BREAKPOINT = 480;
 
   useEffect(() => {
     const handleResize = () => {
-      setIsWideScreenThreshold(window.innerWidth >= LAYOUT_BREAKPOINT);
+      setIsWideScreenThreshold(window.innerWidth >= MEDIUM_BREAKPOINT);
+      setIsSmallScreenThreshold(window.innerWidth <= SMALL_BREAKPOINT);
+
+      if (!hasInitialized) {
+        setHasInitialized(true);
+      }
     };
 
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  }, [hasInitialized]);
 
   let count = 1;
   const steps = [
@@ -44,10 +52,36 @@ export default function PartnerContent() {
   ];
   const reverseSteps = [...steps].reverse();
 
-  // Calculate spacing based on polygon size
   const getPolygonSpacing = () => {
-    return isWideScreenThreshold ? 130 : 100;
+    if (isWideScreenThreshold) return 130;
+    if (isSmallScreenThreshold) return 70;
+    return 100;
   };
+
+  const getPolygonSize = (): "small" | "medium" | "large" => {
+    if (isWideScreenThreshold) return "large";
+    if (isSmallScreenThreshold) return "small";
+    return "medium";
+  };
+
+  const getContainerHeightAdjustment = () => {
+    if (isWideScreenThreshold) return 0;
+    if (isSmallScreenThreshold) return 40;
+    return 65;
+  };
+
+  if (!hasInitialized) {
+    return (
+      <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
+        <div className="w-full pl-0 sm:pl-4 lg:pl-[60px]">
+          <h1 className="text-[color:var(--light)] text-3xl md:text-4xl lg:text-[48px] pt-[10px] lg:pt-[20px] pb-[10px] lg:pb-[20px]">
+            Partner With Us!
+          </h1>
+          <hr className="border-t-2 border-[var(--light)] w-full max-w-[700px]" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div
@@ -92,11 +126,7 @@ export default function PartnerContent() {
               onMouseEnter={() => setHoveredStep(step.num)}
               onMouseLeave={() => setHoveredStep(null)}
             >
-              <Polygon
-                isFilled={hoveredStep === step.num}
-                label={step.label}
-                size="wide"
-              />
+              <Polygon isFilled={hoveredStep === step.num} label={step.label} />
             </div>
           ))}
         </div>
@@ -105,7 +135,10 @@ export default function PartnerContent() {
           <div
             className="relative mx-auto"
             style={{
-              height: `${reverseSteps.length * getPolygonSpacing() + 65}px`,
+              height: `${
+                reverseSteps.length * getPolygonSpacing() +
+                getContainerHeightAdjustment()
+              }px`,
               width: "100%",
             }}
           >
@@ -123,7 +156,7 @@ export default function PartnerContent() {
                 <Polygon
                   isFilled={hoveredStep === step.num}
                   label={step.label}
-                  size="slim"
+                  size={getPolygonSize()}
                 />
               </div>
             ))}

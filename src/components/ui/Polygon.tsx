@@ -1,19 +1,25 @@
 interface PolygonProps {
   isFilled: boolean;
   label: string;
-  size?: "slim" | "wide";
+  size?: "small" | "medium" | "large";
 }
 
-export function Polygon({ isFilled, label, size = "wide" }: PolygonProps) {
+export function Polygon({ isFilled, label, size = "large" }: PolygonProps) {
   const getSvgDimensions = () => {
     switch (size) {
-      case "slim":
+      case "small":
+        return {
+          width: 300,
+          height: 110,
+          points: "110.25,5 225,55 110.25,105 0,55",
+        };
+      case "medium":
         return {
           width: 450,
           height: 165,
           points: "165.4,7.5 337.5,82.5 165.4,157.5 0,82.5",
         };
-      case "wide":
+      case "large":
       default:
         return {
           width: 600,
@@ -28,9 +34,11 @@ export function Polygon({ isFilled, label, size = "wide" }: PolygonProps) {
   const getTextPosition = () => {
     const x = "90%";
     switch (size) {
-      case "slim":
+      case "small":
+        return { x, fontSize: "8px" };
+      case "medium":
         return { x, fontSize: "12px" };
-      case "wide":
+      case "large":
       default:
         return { x, fontSize: "18px" };
     }
