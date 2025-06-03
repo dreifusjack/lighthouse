@@ -25,7 +25,7 @@ export default function Hero() {
     if (windowWidth >= 1024) {
       return { objectPosition: "center center" };
     } else {
-      return { objectPosition: "40% center" };
+      return { objectPosition: "30% center" };
     }
   };
 
