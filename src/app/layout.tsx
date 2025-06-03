@@ -5,8 +5,7 @@ import "./globals.css";
 export const metadata = {
   title: "Lighthouse",
   description:
-    "Lighthouse is a Product Studio and SaaS Launcher. We buy, build, and scale software tools. ",
-  viewport: "width=device-width, initial-scale=1",
+    "Lighthouse is a Product Studio and SaaS Launcher. We buy, build, and scale software tools.",
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -29,6 +28,11 @@ export const metadata = {
       },
     ],
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
