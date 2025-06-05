@@ -14,8 +14,8 @@ export default function BuiltByWidget() {
           Built by Jack Dreifus
         </span>
         <span className="font-medium sm:hidden">Built by</span>
-        <div className="w-5 h-5 md:w-6 md:h-6 relative rounded-full overflow-hidden bg-conic-180 from-indigo-600 via-indigo-50 to-indigo-6000">
-          <span className="absolute inset-0 flex items-center justify-center text-[10px] md:text-xs font-bold">
+        <div className="w-5 h-5 md:w-6 md:h-6 relative rounded-full overflow-hidden bg-[radial-gradient(at_50%_75%,_#bae6fd,_#60a5fa,_#312e81_90%)]">
+          <span className="absolute inset-0 flex items-center justify-center text-[10px] md:text-xs font-bold text-white">
             JD
           </span>
         </div>

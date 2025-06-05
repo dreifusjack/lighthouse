@@ -61,7 +61,7 @@ export default function Hero() {
             transitionDelay: "0.3s",
           }}
         >
-          <h1 className="text-[var(--light)] responsive-title text-3xl md:text-5xl lg:text-6xl font-bold leading-tight">
+          <h1 className="text-[var(--light)] text-2xl md:text-3xl lg:text-4xl font-bold leading-tight">
             We Buy & Build Software Tools For Entrepreneurs
           </h1>
         </div>
