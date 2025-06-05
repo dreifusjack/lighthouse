@@ -32,7 +32,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="min-h-screen h-auto md:h-250 relative overflow-hidden"
+      className="min-h-screen h-auto md:h-200 relative overflow-hidden"
     >
       <div className="absolute inset-0 z-0">
         <Image
