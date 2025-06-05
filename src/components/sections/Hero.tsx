@@ -47,7 +47,7 @@ export default function Hero() {
               "transform 1.2s ease-out, object-position 0.5s ease-out",
             ...getPositionStyles(),
           }}
-          onLoadingComplete={() => setIsLoaded(true)}
+          onLoad={() => setIsLoaded(true)}
         />
       </div>
       <div className="absolute inset-0 z-10 bg-gradient-to-b from-transparent via-transparent to-[#fcf6d7] opacity-100"></div>
