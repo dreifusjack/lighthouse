@@ -75,11 +75,7 @@ export default function Navbar() {
       const scrollPosn = window.scrollY;
 
       // Lighthouse text color logic
-      if (
-        (scrollPosn >= 0 && scrollPosn < 950) ||
-        (scrollPosn > 2000 && scrollPosn < 2850) ||
-        scrollPosn >= 3950
-      ) {
+      if ((scrollPosn >= 0 && scrollPosn < 650) || scrollPosn >= 3500) {
         setLighthouseTextColor("var(--light)");
       } else {
         setLighthouseTextColor("var(--charcoal)");
@@ -87,13 +83,13 @@ export default function Navbar() {
 
       // Active section based on scroll position
       let newSection: SectionName = "home";
-      if (scrollPosn < 950) {
+      if (scrollPosn < 650) {
         newSection = "home";
-      } else if (scrollPosn < 2000) {
+      } else if (scrollPosn < 1650) {
         newSection = "about";
-      } else if (scrollPosn < 2850) {
+      } else if (scrollPosn < 2500) {
         newSection = "partner";
-      } else if (scrollPosn < 3950) {
+      } else if (scrollPosn < 3500) {
         newSection = "mission";
       } else {
         newSection = "contact";
@@ -120,7 +116,7 @@ export default function Navbar() {
   }, [isHovering, mobileMenuOpen]);
 
   const checkPartnerHovering = (scrollPosn: number) => {
-    if (scrollPosn > 1975 && scrollPosn < 2850) {
+    if (scrollPosn > 1650 && scrollPosn < 2500) {
       setIsPartnerHovered(true);
     } else {
       setIsPartnerHovered(false);
@@ -194,7 +190,7 @@ export default function Navbar() {
           <>
             <Box
               width="650px"
-              height="65px"
+              height="55px"
               sx={{
                 backgroundColor: `rgba(254, 250, 240, 0.27)`,
                 backdropFilter: `blur(10px)`,

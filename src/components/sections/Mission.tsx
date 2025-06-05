@@ -58,12 +58,9 @@ export default function Mission() {
               We're not just building software. We're building leverage for the
               next generation of creators.
             </div>
-          </div>
-        </AnimateOnScroll>
-
-        <AnimateOnScroll animation="fade-in" delay={800}>
-          <div className="text-center">
-            <p className="text-xl font-bold">The Lighthouse Team</p>
+            <div className="text-center">
+              <p className="text-xl font-bold">The Lighthouse Team</p>
+            </div>
           </div>
         </AnimateOnScroll>
       </div>
