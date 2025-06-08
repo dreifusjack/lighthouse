@@ -1,6 +1,7 @@
 import { Toaster } from "sonner";
 import { gasoekOne, bricolageGrotesque } from "./fonts";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata = {
   title: "Lighthouse",
@@ -47,6 +48,7 @@ export default function RootLayout({
       <body>
         {children}
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
