@@ -72,10 +72,10 @@ export default function PartnerContent() {
 
   if (!hasInitialized) {
     return (
-      <div className="w-full px-4 sm:px-6 lg:px-8 py-6">
-        <div className="w-full pl-0 sm:pl-4 lg:pl-[60px]">
-          <h1 className="text-[color:var(--light)] text-3xl md:text-4xl lg:text-[48px] pt-[10px] lg:pt-[20px] pb-[10px] lg:pb-[20px]">
-            Partner With Us!
+      <div className="w-full pl-2 sm:pl-4 lg:pl-6 pr-4 sm:pr-6 lg:pr-8 py-6">
+        <div className="w-full pl-0 sm:pl-2 lg:pl-[20px]">
+          <h1 className="text-[color:var(--light)] text-2xl md:text-4xl pt-[10px] lg:pt-[20px] pb-[10px] lg:pb-[20px]">
+            Lighthouse
           </h1>
           <hr className="border-t-2 border-[var(--light)] w-full max-w-[700px]" />
         </div>
@@ -87,15 +87,15 @@ export default function PartnerContent() {
     <div
       className={`w-full ${
         isWideScreenThreshold ? "flex" : "block"
-      } px-4 sm:px-6 lg:px-8 py-6`}
+      } pl-2 sm:pl-4 lg:pl-6 pr-4 sm:pr-6 lg:pr-8 py-6`}
     >
       <div
         className={`${
           isWideScreenThreshold ? "w-1/2" : "w-full"
-        } pl-0 sm:pl-4 lg:pl-[60px]`}
+        } pl-0 sm:pl-2 lg:pl-[20px]`}
       >
-        <h1 className="text-[color:var(--light)] text-3xl md:text-4xl lg:text-[48px] pt-[10px] lg:pt-[20px] pb-[10px] lg:pb-[20px]">
-          Partner With Us!
+        <h1 className="text-[color:var(--light)] text-2xl md:text-4xl pt-[10px] lg:pt-[20px] pb-[10px] lg:pb-[20px]">
+          Lighthouse
         </h1>
         <hr className="border-t-2 border-[var(--light)] w-full max-w-[700px]" />
         {steps.map((step, index) => (
@@ -114,7 +114,7 @@ export default function PartnerContent() {
       </div>
 
       {isWideScreenThreshold ? (
-        <div className="relative w-1/2 ml-[15%] mt-[10%]">
+        <div className="relative w-1/2 ml-[8%] mt-[10%]">
           {reverseSteps.map((step, index) => (
             <div
               key={index}
