@@ -207,7 +207,7 @@ export default function Navbar() {
               <div
                 className="absolute bg-white/30 rounded-2xl transition-all duration-300 ease-in-out"
                 style={{
-                  left: activeIndicator.left + 3,
+                  left: activeIndicator.left + 2.5,
                   width: activeIndicator.width,
                   height: activeIndicator.height,
                 }}
