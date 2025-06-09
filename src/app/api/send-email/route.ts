@@ -22,7 +22,6 @@ export async function POST(req: Request) {
       },
     });
 
-
     const emailContent = `
       <h2>New Contact Form Submission</h2>
       <p><strong>Name:</strong> ${firstName} ${lastName}</p>
@@ -41,10 +40,8 @@ export async function POST(req: Request) {
     };
 
     await transporter.sendMail(mailOptions);
-
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
-    console.error('Error sending email:', error);
     return NextResponse.json(
       { error: 'Failed to send email' },
       { status: 500 }

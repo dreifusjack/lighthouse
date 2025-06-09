@@ -21,8 +21,6 @@ export default function Navbar() {
     width: 0,
     height: 0,
   });
-
-  // Layout detection
   const [isDesktopView, setIsDesktopView] = useState<boolean | null>(null);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -209,10 +207,9 @@ export default function Navbar() {
               <div
                 className="absolute bg-white/30 rounded-2xl transition-all duration-300 ease-in-out"
                 style={{
-                  left: activeIndicator.left,
+                  left: activeIndicator.left + 3,
                   width: activeIndicator.width,
                   height: activeIndicator.height,
-                  zIndex: 0,
                 }}
               />
               <ul className="flex flex-row space-x-3 relative z-10">

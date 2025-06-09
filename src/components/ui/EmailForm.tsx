@@ -61,7 +61,6 @@ export default function EmailForm() {
 
       toast.success("Thank you for your message! We'll get back to you soon.");
     } catch (error) {
-      console.error("Form submission error:", error);
       toast.error(
         "Sorry, there was a problem sending your message. Please try again later."
       );
