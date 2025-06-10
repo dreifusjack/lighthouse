@@ -10,7 +10,7 @@ export const metadata = {
 
   // Open Graph metadata for social media sharing
   openGraph: {
-    title: "Lighthouse - Product Studio & SaaS Launcher",
+    title: "Lighthouse",
     description:
       "Lighthouse is a Product Studio and SaaS Launcher. We buy, build, and scale software tools.",
     url: "https://www.lighthouselaunch.com",
@@ -21,31 +21,24 @@ export const metadata = {
         url: "/Lighthouse-FacebookPost.png",
         width: 1200,
         height: 630,
-        alt: "Lighthouse - Product Studio & SaaS Launcher",
+        alt: "Lighthouse",
       },
     ],
   },
-
-  // Twitter Card metadata
   twitter: {
     card: "summary_large_image",
-    title: "Lighthouse - Product Studio & SaaS Launcher",
+    title: "Lighthouse",
     description:
       "Lighthouse is a Product Studio and SaaS Launcher. We buy, build, and scale software tools.",
     images: ["/Lighthouse-FacebookPost.png"], // Same image as Open Graph
   },
-
-  // Additional metadata
   robots: {
     index: true,
     follow: true,
   },
-
-  // Canonical URL
   alternates: {
     canonical: "https://www.lighthouselaunch.com",
   },
-
   icons: {
     icon: [
       { url: "/favicon.ico" },
