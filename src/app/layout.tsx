@@ -7,6 +7,45 @@ export const metadata = {
   title: "Lighthouse",
   description:
     "Lighthouse is a Product Studio and SaaS Launcher. We buy, build, and scale software tools.",
+
+  // Open Graph metadata for social media sharing
+  openGraph: {
+    title: "Lighthouse - Product Studio & SaaS Launcher",
+    description:
+      "Lighthouse is a Product Studio and SaaS Launcher. We buy, build, and scale software tools.",
+    url: "https://www.lighthouselaunch.com",
+    siteName: "Lighthouse",
+    type: "website",
+    images: [
+      {
+        url: "/android-chrome-512x512.png", // Create this image (1200x630px recommended)
+        width: 1200,
+        height: 630,
+        alt: "Lighthouse - Product Studio & SaaS Launcher",
+      },
+    ],
+  },
+
+  // Twitter Card metadata
+  twitter: {
+    card: "summary_large_image",
+    title: "Lighthouse - Product Studio & SaaS Launcher",
+    description:
+      "Lighthouse is a Product Studio and SaaS Launcher. We buy, build, and scale software tools.",
+    images: ["/android-chrome-512x512.png"], // Same image as Open Graph
+  },
+
+  // Additional metadata
+  robots: {
+    index: true,
+    follow: true,
+  },
+
+  // Canonical URL
+  alternates: {
+    canonical: "https://www.lighthouselaunch.com",
+  },
+
   icons: {
     icon: [
       { url: "/favicon.ico" },
@@ -33,6 +72,7 @@ export const metadata = {
 
 export const viewport = {
   width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
