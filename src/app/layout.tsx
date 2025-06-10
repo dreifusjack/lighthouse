@@ -16,14 +16,6 @@ export const metadata = {
     url: "https://www.lighthouselaunch.com",
     siteName: "Lighthouse",
     type: "website",
-    images: [
-      {
-        url: "/android-chrome-13x32.png", // Create this image (1200x630px recommended)
-        width: 1200,
-        height: 500,
-        alt: "Lighthouse - Product Studio & SaaS Launcher",
-      },
-    ],
   },
 
   // Twitter Card metadata
@@ -32,7 +24,6 @@ export const metadata = {
     title: "Lighthouse - Product Studio & SaaS Launcher",
     description:
       "Lighthouse is a Product Studio and SaaS Launcher. We buy, build, and scale software tools.",
-    images: ["/android-chrome-32x32.png"], // Same image as Open Graph
   },
 
   // Additional metadata
