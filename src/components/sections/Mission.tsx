@@ -11,7 +11,7 @@ export default function Mission() {
     {
       title: "Our Experience",
       content:
-        "We buy and build software tools that make it easy for anyone to launch a business.",
+        "We've been in those shoes. We've built, launched, failed, and succeeded. And along the way, one truth became clear—entrepreneurship doesn't need to be this hard.",
     },
     {
       title: "Our Approach",

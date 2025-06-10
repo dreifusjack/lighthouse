@@ -74,8 +74,8 @@ export default function PartnerContent() {
     return (
       <div className="w-full pl-2 sm:pl-4 lg:pl-6 pr-4 sm:pr-6 lg:pr-8 py-6">
         <div className="w-full pl-0 sm:pl-2 lg:pl-[20px]">
-          <h1 className="text-[color:var(--light)] text-2xl md:text-4xl pt-[10px] lg:pt-[20px] pb-[10px] lg:pb-[20px]">
-            Lighthouse
+          <h1 className="text-[color:var(--light)] text-3xl md:text-5xl pt-[10px] lg:pt-[20px] pb-[10px] lg:pb-[20px]">
+            Partner With Us!
           </h1>
           <hr className="border-t-2 border-[var(--light)] w-full max-w-[700px]" />
         </div>
@@ -94,8 +94,8 @@ export default function PartnerContent() {
           isWideScreenThreshold ? "w-1/2" : "w-full"
         } pl-0 sm:pl-2 lg:pl-[20px]`}
       >
-        <h1 className="text-[color:var(--light)] text-2xl md:text-4xl pt-[10px] lg:pt-[20px] pb-[10px] lg:pb-[20px]">
-          Lighthouse
+        <h1 className="text-[color:var(--light)] text-3xl md:text-5xl pt-[10px] lg:pt-[20px] pb-[10px] lg:pb-[20px]">
+          Partner With Us!
         </h1>
         <hr className="border-t-2 border-[var(--light)] w-full max-w-[700px]" />
         {steps.map((step, index) => (
