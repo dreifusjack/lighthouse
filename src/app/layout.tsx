@@ -18,7 +18,7 @@ export const metadata = {
     type: "website",
     images: [
       {
-        url: "/android-chrome-512x512.png", // Create this image (1200x630px recommended)
+        url: "/android-chrome-192x192.png", // Create this image (1200x630px recommended)
         width: 1200,
         height: 630,
         alt: "Lighthouse - Product Studio & SaaS Launcher",
@@ -32,7 +32,7 @@ export const metadata = {
     title: "Lighthouse - Product Studio & SaaS Launcher",
     description:
       "Lighthouse is a Product Studio and SaaS Launcher. We buy, build, and scale software tools.",
-    images: ["/android-chrome-512x512.png"], // Same image as Open Graph
+    images: ["/android-chrome-192x192.png"], // Same image as Open Graph
   },
 
   // Additional metadata
