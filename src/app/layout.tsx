@@ -20,7 +20,7 @@ export const metadata = {
       {
         url: "/android-chrome-13x32.png", // Create this image (1200x630px recommended)
         width: 1200,
-        height: 630,
+        height: 500,
         alt: "Lighthouse - Product Studio & SaaS Launcher",
       },
     ],
