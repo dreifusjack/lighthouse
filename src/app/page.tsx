@@ -5,7 +5,6 @@ import Partner from "@/components/sections/Partner";
 import Mission from "@/components/sections/Mission";
 import Collaborate from "@/components/sections/Collaborate";
 import Footer from "@/components/sections/Footer";
-import BuiltByWidget from "@/components/ui/BuiltByWidget";
 
 export default function Home() {
   return (
@@ -17,7 +16,7 @@ export default function Home() {
       <Mission />
       <Collaborate />
       <Footer />
-      <BuiltByWidget />
+      {/* <BuiltByWidget /> */}
     </main>
   );
 }
